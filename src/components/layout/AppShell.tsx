@@ -20,7 +20,7 @@ export const AppShell: React.FC<AppShellProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-ivory flex">
+    <div className="min-h-screen bg-obsidian-950 text-frost-100 flex">
       {/* Sidebar for Desktop & Mobile Drawer */}
       <Sidebar
         activeModule={activeModule}

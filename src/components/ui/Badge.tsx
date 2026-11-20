@@ -2,7 +2,7 @@ import React from 'react';
 
 interface BadgeProps {
   children: React.ReactNode;
-  variant?: 'sage' | 'lavender' | 'peach' | 'plum' | 'outline' | 'ivory';
+  variant?: 'emerald' | 'teal' | 'amber' | 'violet' | 'azure' | 'crimson' | 'obsidian' | 'outline' | 'slate';
   size?: 'sm' | 'md';
   className?: string;
   icon?: React.ReactNode;
@@ -10,18 +10,21 @@ interface BadgeProps {
 
 export const Badge: React.FC<BadgeProps> = ({
   children,
-  variant = 'lavender',
+  variant = 'teal',
   size = 'md',
   className = '',
   icon
 }) => {
   const variantStyles = {
-    sage: 'bg-sage/40 text-sage-text border-sage/60',
-    lavender: 'bg-lavender text-plum border-lavender-accent/40',
-    peach: 'bg-peach text-peach-dark border-peach-accent/50',
-    plum: 'bg-plum text-ivory border-plum',
-    outline: 'bg-transparent text-plum border-plum/20',
-    ivory: 'bg-ivory-200 text-plum-light border-ivory-300',
+    emerald: 'bg-emerald-900/50 text-emerald-300 border-emerald-700/60',
+    teal: 'bg-teal-900/70 text-teal-200 border-teal-700/60',
+    amber: 'bg-amber-900/45 text-amber-300 border-amber-700/60',
+    violet: 'bg-violet-700/30 text-violet-300 border-violet-500/45',
+    azure: 'bg-azure-900/55 text-azure-300 border-azure-500/45',
+    crimson: 'bg-crimson-900/50 text-crimson-300 border-crimson-600/50',
+    obsidian: 'bg-obsidian-950 text-frost-100 border-obsidian-500',
+    outline: 'bg-transparent text-frost-300 border-obsidian-400',
+    slate: 'bg-obsidian-700 text-frost-400 border-obsidian-500',
   };
 
   const sizeStyles = {

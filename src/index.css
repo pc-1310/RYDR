@@ -4,19 +4,25 @@
 
 @layer base {
   :root {
-    --bg-ivory: #FAF8F4;
-    --soft-lavender: #EAE5F4;
-    --muted-lavender: #B8A6D9;
-    --pastel-sage: #C9D8C5;
-    --soft-peach: #F3D9C8;
-    --deep-plum: #302A38;
+    --bg-obsidian: #06080d;
+    --surface-rail: #0b0c10;
+    --surface-card: #14181f;
+    --surface-elevated: #1e2230;
+    --border-subtle: #32363f;
+    --accent-teal: #00c3b4;
+    --accent-teal-bright: #1edcd3;
+    --accent-azure: #087aff;
+    --accent-violet: #8651ff;
+    --text-frost: #f5f7fa;
+    --text-muted: #9ca3af;
+    color-scheme: dark;
   }
 
   html, body {
     margin: 0;
     padding: 0;
-    background-color: #FAF8F4;
-    color: #302A38;
+    background-color: #06080d;
+    color: #f5f7fa;
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -42,37 +48,52 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(184, 166, 217, 0.4);
+    background: rgba(0, 195, 180, 0.35);
     border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(184, 166, 217, 0.7);
+    background: rgba(0, 195, 180, 0.65);
   }
 }
 
 @layer utilities {
   .glass-card {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(20, 24, 31, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(234, 229, 244, 0.8);
+    border: 1px solid rgba(50, 54, 63, 0.85);
   }
 
   .glass-card-subtle {
-    background: rgba(250, 248, 244, 0.75);
+    background: rgba(11, 12, 16, 0.78);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(234, 229, 244, 0.6);
+    border: 1px solid rgba(50, 54, 63, 0.6);
   }
 
-  .glass-plum {
-    background: rgba(48, 42, 56, 0.95);
+  .glass-obsidian {
+    background: rgba(6, 8, 13, 0.92);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(184, 166, 217, 0.2);
+    border: 1px solid rgba(0, 195, 180, 0.25);
   }
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.35s ease-out forwards;
   }
 }

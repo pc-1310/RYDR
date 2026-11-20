@@ -30,7 +30,7 @@ export function generateSimulatedResponse(
     return {
       sender: 'assistant',
       isSimulated: true,
-      content: `Here is a bespoke acquisition estimate for the **${spectre.name}** based on our current Obsidian Tier private portfolio terms.\n\nUnder our 36-month tailored lease schedule with an assumed \$15,000 capital reduction, the estimated monthly investment is approximately **\$1,680/mo** plus local taxes, including complimentary White-Glove Valet service and all scheduled atelier maintenance.`,
+      content: `Here is a bespoke acquisition estimate for the **${spectre.name}** based on our current Obsidian Tier private portfolio terms.\n\nUnder our 36-month tailored lease schedule with an assumed $15,000 capital reduction, the estimated monthly investment is approximately **$1,680/mo** plus local taxes, including complimentary White-Glove Valet service and all scheduled atelier maintenance.`,
       financingDetails: {
         vehicleName: spectre.name,
         vehiclePrice: spectre.startingPrice,

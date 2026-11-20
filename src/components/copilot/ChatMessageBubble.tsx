@@ -27,7 +27,7 @@ export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
     const parts = text.split(/(\*\*.*?\*\*)/g);
     return parts.map((part, index) => {
       if (part.startsWith('**') && part.endsWith('**')) {
-        return <strong key={index} className="font-semibold text-plum">{part.slice(2, -2)}</strong>;
+        return <strong key={index} className="font-semibold text-frost-100">{part.slice(2, -2)}</strong>;
       }
       return <span key={index}>{part}</span>;
     });
@@ -37,24 +37,24 @@ export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
     <div className={`flex gap-3.5 my-4 ${isUser ? 'justify-end' : 'justify-start'}`}>
       {/* Assistant Avatar */}
       {!isUser && (
-        <div className="w-9 h-9 rounded-xl bg-ivory-200 border border-lavender-accent flex items-center justify-center shrink-0 shadow-soft">
-          <Sparkles className="w-4 h-4 text-lavender-deep" />
+        <div className="w-9 h-9 rounded-xl bg-obsidian-800 border border-teal-500/50 flex items-center justify-center shrink-0 shadow-soft">
+          <Sparkles className="w-4 h-4 text-teal-400" />
         </div>
       )}
 
       {/* Bubble Container */}
       <div className={`max-w-2xl space-y-3 ${isUser ? 'items-end' : 'items-start'}`}>
         {/* Meta Bar */}
-        <div className={`flex items-center gap-2 text-[11px] ${isUser ? 'justify-end text-plum-muted' : 'justify-start text-plum-light'}`}>
+        <div className={`flex items-center gap-2 text-[11px] ${isUser ? 'justify-end text-frost-600' : 'justify-start text-frost-500'}`}>
           {isUser ? (
             <span>You • {message.timestamp}</span>
           ) : (
             <div className="flex items-center gap-2">
-              <span className="font-semibold text-plum">RYDR Co-Pilot</span>
-              <Badge variant="lavender" size="sm" className="text-[10px] py-0">
+              <span className="font-semibold text-frost-100">RYDR Co-Pilot</span>
+              <Badge variant="teal" size="sm" className="text-[10px] py-0">
                 Simulated Local Concierge
               </Badge>
-              <span className="text-plum-muted">{message.timestamp}</span>
+              <span className="text-frost-600">{message.timestamp}</span>
             </div>
           )}
         </div>
@@ -63,8 +63,8 @@ export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
         <div
           className={`p-4 sm:p-5 rounded-3xl text-sm leading-relaxed whitespace-pre-line ${
             isUser
-              ? 'bg-plum text-ivory rounded-tr-sm shadow-soft'
-              : 'bg-white/95 border border-lavender/90 text-plum-light rounded-tl-sm shadow-soft'
+              ? 'bg-gradient-to-br from-teal-800 to-teal-900 text-frost-100 border border-teal-500/45 rounded-tr-sm shadow-soft'
+              : 'bg-obsidian-800 border border-obsidian-500/90 text-frost-300 rounded-tl-sm shadow-soft'
           }`}
         >
           {renderFormattedText(message.content)}
@@ -72,21 +72,21 @@ export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
 
         {/* Attached Comparison Preview */}
         {message.comparisonVehicles && message.comparisonVehicles.length >= 2 && (
-          <div className="p-4 rounded-2xl bg-lavender/40 border border-lavender-accent/60 space-y-3">
+          <div className="p-4 rounded-2xl bg-teal-950/60 border border-teal-700/50 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-plum uppercase tracking-wider">
+              <span className="text-xs font-semibold text-frost-100 uppercase tracking-wider">
                 Vehicle Comparison Matrix
               </span>
-              <Badge variant="plum" size="sm">
+              <Badge variant="obsidian" size="sm">
                 2 Models Ready
               </Badge>
             </div>
             <div className="grid grid-cols-2 gap-3">
               {message.comparisonVehicles.map((v) => (
-                <div key={v.id} className="p-2.5 rounded-xl bg-white border border-lavender/60 text-xs">
+                <div key={v.id} className="p-2.5 rounded-xl bg-obsidian-800 border border-obsidian-500 text-xs">
                   <img src={v.exteriorImage} alt={v.name} className="w-full h-16 object-cover rounded-lg mb-2" />
-                  <p className="font-semibold text-plum truncate">{v.name}</p>
-                  <p className="text-[11px] text-plum-light">${v.startingPrice.toLocaleString()}</p>
+                  <p className="font-semibold text-frost-100 truncate">{v.name}</p>
+                  <p className="text-[11px] text-teal-300">${v.startingPrice.toLocaleString()}</p>
                 </div>
               ))}
             </div>
@@ -94,7 +94,7 @@ export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
               variant="primary"
               size="sm"
               fullWidth
-              icon={<Scale className="w-3.5 h-3.5 text-peach" />}
+              icon={<Scale className="w-3.5 h-3.5 text-obsidian-950" />}
               onClick={() => onCompare(message.comparisonVehicles!)}
             >
               Open Side-by-Side Comparison Modal
@@ -104,32 +104,32 @@ export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
 
         {/* Attached Financing Calculator Preview */}
         {message.financingDetails && (
-          <div className="p-4 rounded-2xl bg-white border border-peach-accent/70 shadow-soft space-y-2.5">
+          <div className="p-4 rounded-2xl bg-obsidian-800 border border-amber-700/60 shadow-soft space-y-2.5">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold text-plum">
+              <span className="text-xs font-semibold text-frost-100">
                 Acquisition Breakdown • {message.financingDetails.vehicleName}
               </span>
-              <Badge variant="peach" size="sm">
+              <Badge variant="amber" size="sm">
                 Est. ${message.financingDetails.monthlyPayment}/mo
               </Badge>
             </div>
             <div className="grid grid-cols-3 gap-2 text-center text-xs">
-              <div className="p-2 rounded-lg bg-ivory">
-                <span className="text-[10px] text-plum-muted block">Base Price</span>
-                <span className="font-semibold text-plum">${message.financingDetails.vehiclePrice.toLocaleString()}</span>
+              <div className="p-2 rounded-lg bg-obsidian-900 border border-obsidian-500/60">
+                <span className="text-[10px] text-frost-600 block">Base Price</span>
+                <span className="font-semibold text-frost-100">${message.financingDetails.vehiclePrice.toLocaleString()}</span>
               </div>
-              <div className="p-2 rounded-lg bg-ivory">
-                <span className="text-[10px] text-plum-muted block">Down Payment</span>
-                <span className="font-semibold text-plum">${message.financingDetails.downPayment.toLocaleString()}</span>
+              <div className="p-2 rounded-lg bg-obsidian-900 border border-obsidian-500/60">
+                <span className="text-[10px] text-frost-600 block">Down Payment</span>
+                <span className="font-semibold text-frost-100">${message.financingDetails.downPayment.toLocaleString()}</span>
               </div>
-              <div className="p-2 rounded-lg bg-ivory">
-                <span className="text-[10px] text-plum-muted block">Term</span>
-                <span className="font-semibold text-plum">{message.financingDetails.termMonths} Months</span>
+              <div className="p-2 rounded-lg bg-obsidian-900 border border-obsidian-500/60">
+                <span className="text-[10px] text-frost-600 block">Term</span>
+                <span className="font-semibold text-frost-100">{message.financingDetails.termMonths} Months</span>
               </div>
             </div>
             {message.suggestedVehicles && message.suggestedVehicles[0] && (
               <Button
-                variant="lavender"
+                variant="teal"
                 size="sm"
                 fullWidth
                 icon={<Calculator className="w-3.5 h-3.5" />}
@@ -143,17 +143,17 @@ export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
 
         {/* Attached Test Drive Preview */}
         {message.testDriveVehicle && (
-          <div className="p-4 rounded-2xl bg-white border border-sage/80 shadow-soft space-y-3">
+          <div className="p-4 rounded-2xl bg-obsidian-800 border border-emerald-700/60 shadow-soft space-y-3">
             <div className="flex items-center justify-between">
               <div>
-                <span className="text-xs font-semibold text-plum block">
+                <span className="text-xs font-semibold text-frost-100 block">
                   Private Enclosed Test Drive
                 </span>
-                <span className="text-[11px] text-plum-light">
+                <span className="text-[11px] text-frost-500">
                   {message.testDriveVehicle.name} delivered to your residence
                 </span>
               </div>
-              <Badge variant="sage" size="sm">
+              <Badge variant="emerald" size="sm">
                 Complimentary
               </Badge>
             </div>
@@ -161,7 +161,7 @@ export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
               variant="primary"
               size="sm"
               fullWidth
-              icon={<Calendar className="w-3.5 h-3.5 text-peach" />}
+              icon={<Calendar className="w-3.5 h-3.5 text-obsidian-950" />}
               onClick={() => onBookTestDrive(message.testDriveVehicle!)}
             >
               Select Delivery Date & Address
@@ -183,7 +183,7 @@ export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
         {/* Follow-up Prompts */}
         {message.suggestedFollowUps && message.suggestedFollowUps.length > 0 && (
           <div className="space-y-1.5 pt-1">
-            <span className="text-[10px] uppercase font-semibold text-plum-muted tracking-wider block">
+            <span className="text-[10px] uppercase font-semibold text-frost-600 tracking-wider block">
               Suggested Concierge Inquiries:
             </span>
             <div className="flex flex-wrap gap-1.5">
@@ -191,10 +191,10 @@ export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
                 <button
                   key={idx}
                   onClick={() => onSelectPrompt(promptText)}
-                  className="text-xs px-3 py-1.5 rounded-full bg-ivory hover:bg-lavender/60 text-plum-light hover:text-plum border border-lavender/70 transition-all cursor-pointer text-left flex items-center gap-1.5"
+                  className="text-xs px-3 py-1.5 rounded-full bg-obsidian-800 hover:bg-teal-900/60 text-frost-300 hover:text-teal-200 border border-obsidian-500 hover:border-teal-500/50 transition-all cursor-pointer text-left flex items-center gap-1.5"
                 >
                   <span>{promptText}</span>
-                  <ArrowRight className="w-3 h-3 text-lavender-deep" />
+                  <ArrowRight className="w-3 h-3 text-teal-400" />
                 </button>
               ))}
             </div>
@@ -204,7 +204,7 @@ export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
 
       {/* User Avatar */}
       {isUser && (
-        <div className="w-9 h-9 rounded-xl bg-plum text-ivory font-serif text-xs font-semibold flex items-center justify-center shrink-0 shadow-soft">
+        <div className="w-9 h-9 rounded-xl bg-teal-500 text-obsidian-950 font-serif text-xs font-bold flex items-center justify-center shrink-0 shadow-soft">
           JV
         </div>
       )}

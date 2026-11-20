@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { 
-  Sparkles, 
-  Send, 
-  SlidersHorizontal, 
+import {
+  Sparkles,
+  Send,
+  SlidersHorizontal,
   RotateCcw
 } from 'lucide-react';
 import type { ChatMessage, PersonalizationFilters, Vehicle } from '../../types';
@@ -64,13 +64,6 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
     scrollToBottom();
   }, [messages, isTyping]);
 
-  // Handle initial prompt passed from search or overview
-  useEffect(() => {
-    if (initialPrompt && initialPrompt.trim().length > 0) {
-      handleSendMessage(initialPrompt);
-    }
-  }, [initialPrompt]);
-
   const handleSendMessage = (textToSend?: string) => {
     const text = (textToSend || inputText).trim();
     if (!text || isTyping) return;
@@ -98,6 +91,13 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
       setIsTyping(false);
     }, 600);
   };
+
+  // Handle initial prompt passed from search or overview
+  useEffect(() => {
+    if (initialPrompt && initialPrompt.trim().length > 0) {
+      handleSendMessage(initialPrompt);
+    }
+  }, [initialPrompt]);
 
   const handleResetChat = () => {
     setMessages([
@@ -146,28 +146,28 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
   return (
     <div className="space-y-6">
       {/* Top Banner: Discovery & Personalization Toggle */}
-      <div className="bg-white/95 rounded-3xl p-6 border border-lavender/80 shadow-soft">
+      <div className="bg-obsidian-800/95 rounded-3xl p-6 border border-obsidian-500/80 shadow-soft">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="font-serif text-2xl font-semibold text-plum">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="font-serif text-2xl font-semibold text-frost-100">
                 AI Buyer Co-Pilot
               </span>
-              <Badge variant="lavender" size="sm" icon={<Sparkles className="w-3 h-3 text-lavender-deep" />}>
+              <Badge variant="teal" size="sm" icon={<Sparkles className="w-3 h-3 text-teal-300" />}>
                 Simulated Local AI
               </Badge>
-              <Badge variant="sage" size="sm">
+              <Badge variant="emerald" size="sm">
                 Obsidian Advisor
               </Badge>
             </div>
-            <p className="text-xs text-plum-light max-w-2xl leading-relaxed">
+            <p className="text-xs text-frost-500 max-w-2xl leading-relaxed">
               Explore bespoke recommendations, compare engineering telemetry, calculate tailored financing, or schedule private white-glove home test drives.
             </p>
           </div>
 
           <div className="flex items-center gap-2.5">
             <Button
-              variant={showFilters ? 'primary' : 'lavender'}
+              variant={showFilters ? 'primary' : 'teal'}
               size="sm"
               icon={<SlidersHorizontal className="w-3.5 h-3.5" />}
               onClick={() => setShowFilters(!showFilters)}
@@ -177,7 +177,7 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
             <Button
               variant="secondary"
               size="sm"
-              icon={<RotateCcw className="w-3.5 h-3.5 text-plum-light" />}
+              icon={<RotateCcw className="w-3.5 h-3.5 text-frost-400" />}
               onClick={handleResetChat}
             >
               Reset
@@ -187,7 +187,7 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
 
         {/* Collapsible Personalization Drawer */}
         {showFilters && (
-          <div className="mt-6 pt-6 border-t border-lavender/50 animate-fadeIn">
+          <div className="mt-6 pt-6 border-t border-obsidian-500/60 animate-fadeIn">
             <PersonalizationDrawer
               filters={filters}
               onChangeFilters={setFilters}
@@ -200,7 +200,7 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
 
       {/* Suggested Prompt Chips */}
       <div className="space-y-2">
-        <div className="flex items-center justify-between text-xs text-plum-muted px-1">
+        <div className="flex items-center justify-between text-xs text-frost-600 px-1">
           <span className="font-semibold uppercase tracking-wider text-[11px]">
             Curated Inquiries
           </span>
@@ -211,17 +211,17 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
             <button
               key={idx}
               onClick={() => handleSendMessage(item.prompt)}
-              className="p-3.5 rounded-2xl bg-white hover:bg-lavender/40 border border-lavender/70 shadow-xs hover:shadow-soft transition-all text-left flex flex-col justify-between group cursor-pointer"
+              className="p-3.5 rounded-2xl bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-500/80 hover:border-teal-500/50 shadow-xs hover:shadow-soft transition-all text-left flex flex-col justify-between group cursor-pointer"
             >
               <div className="flex items-center justify-between mb-1.5">
-                <span className="text-xs font-semibold text-plum group-hover:text-lavender-deep transition-colors">
+                <span className="text-xs font-semibold text-frost-100 group-hover:text-teal-300 transition-colors">
                   {item.title}
                 </span>
-                <span className="text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-ivory-200 text-plum-muted">
+                <span className="text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-obsidian-900 border border-obsidian-500 text-teal-300">
                   {item.tag}
                 </span>
               </div>
-              <p className="text-[11px] text-plum-light line-clamp-2 leading-snug">
+              <p className="text-[11px] text-frost-500 line-clamp-2 leading-snug">
                 "{item.prompt}"
               </p>
             </button>
@@ -230,7 +230,7 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
       </div>
 
       {/* Interactive Chat Feed */}
-      <div className="bg-ivory-200/50 rounded-3xl border border-lavender/80 p-4 sm:p-6 min-h-[460px] flex flex-col justify-between shadow-soft">
+      <div className="bg-obsidian-900/90 rounded-3xl border border-obsidian-500/80 p-4 sm:p-6 min-h-[460px] flex flex-col justify-between shadow-soft">
         <div className="space-y-4 overflow-y-auto max-h-[600px] pr-1">
           {messages.map((msg) => (
             <ChatMessageBubble
@@ -246,13 +246,13 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
           {/* Typing Indicator */}
           {isTyping && (
             <div className="flex items-center gap-3 my-4">
-              <div className="w-8 h-8 rounded-xl bg-ivory-200 border border-lavender flex items-center justify-center">
-                <Sparkles className="w-4 h-4 text-lavender-deep animate-pulse" />
+              <div className="w-8 h-8 rounded-xl bg-obsidian-800 border border-teal-500/50 flex items-center justify-center">
+                <Sparkles className="w-4 h-4 text-teal-400 animate-pulse" />
               </div>
-              <div className="p-3.5 rounded-2xl bg-white border border-lavender/80 shadow-xs flex items-center gap-1.5 text-xs text-plum-light">
-                <span className="w-2 h-2 rounded-full bg-lavender-deep animate-bounce" />
-                <span className="w-2 h-2 rounded-full bg-lavender-deep animate-bounce [animation-delay:0.2s]" />
-                <span className="w-2 h-2 rounded-full bg-lavender-deep animate-bounce [animation-delay:0.4s]" />
+              <div className="p-3.5 rounded-2xl bg-obsidian-800 border border-obsidian-500 shadow-xs flex items-center gap-1.5 text-xs text-frost-400">
+                <span className="w-2 h-2 rounded-full bg-teal-400 animate-bounce" />
+                <span className="w-2 h-2 rounded-full bg-teal-400 animate-bounce [animation-delay:0.2s]" />
+                <span className="w-2 h-2 rounded-full bg-teal-400 animate-bounce [animation-delay:0.4s]" />
                 <span className="ml-2 font-medium">RYDR Co-Pilot is curating telematics...</span>
               </div>
             </div>
@@ -262,7 +262,7 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
         </div>
 
         {/* Input Bar */}
-        <div className="mt-4 pt-4 border-t border-lavender/60">
+        <div className="mt-4 pt-4 border-t border-obsidian-500/70">
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -276,20 +276,20 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 placeholder="Ask about vehicle dynamics, financing breakdown, or home test drives..."
-                className="w-full bg-white text-xs sm:text-sm text-plum placeholder-plum-muted/70 px-4 sm:px-5 py-3.5 rounded-full border border-lavender/90 focus:border-lavender-deep focus:outline-none focus:ring-2 focus:ring-lavender-accent/30 shadow-xs transition-all"
+                className="w-full bg-obsidian-800 text-xs sm:text-sm text-frost-100 placeholder-frost-700 px-4 sm:px-5 py-3.5 rounded-full border border-obsidian-500 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/25 shadow-xs transition-all"
               />
             </div>
             <Button
               type="submit"
               variant="primary"
               size="md"
-              icon={<Send className="w-4 h-4 text-peach" />}
+              icon={<Send className="w-4 h-4 text-obsidian-950" />}
               disabled={!inputText.trim() || isTyping}
             >
               Send
             </Button>
           </form>
-          <div className="flex items-center justify-between text-[11px] text-plum-muted px-3 mt-2">
+          <div className="flex items-center justify-between text-[11px] text-frost-600 px-3 mt-2">
             <span>Simulated Automotive Intelligence • No external API needed</span>
             <span className="hidden sm:inline">Press Enter to dispatch inquiry</span>
           </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'lavender' | 'peach' | 'sage' | 'outline' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'teal' | 'violet' | 'amber' | 'emerald' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   icon?: React.ReactNode;
   iconPosition?: 'left' | 'right';
@@ -19,16 +19,17 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center font-medium rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-lavender-accent/40 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer';
+  const baseStyles = 'inline-flex items-center justify-center font-medium rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-teal-500/40 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer';
 
   const variantStyles = {
-    primary: 'bg-plum text-ivory hover:bg-plum-dark shadow-soft hover:shadow-soft-lg',
-    secondary: 'bg-ivory-200 text-plum hover:bg-ivory-300 border border-plum/10',
-    lavender: 'bg-lavender text-plum hover:bg-lavender-accent/30 border border-lavender-accent/50',
-    peach: 'bg-peach text-peach-dark hover:bg-peach-accent/40 border border-peach-accent/60',
-    sage: 'bg-sage text-sage-text hover:bg-sage/80 border border-sage/70',
-    outline: 'bg-transparent text-plum border border-plum/20 hover:bg-lavender/40 hover:border-plum/40',
-    ghost: 'bg-transparent text-plum hover:bg-lavender/50',
+    primary: 'bg-teal-500 text-obsidian-950 font-semibold hover:bg-teal-400 shadow-soft hover:shadow-glow-teal',
+    secondary: 'bg-obsidian-700 text-frost-100 hover:bg-obsidian-600 border border-obsidian-500',
+    teal: 'bg-teal-900/70 text-teal-200 hover:bg-teal-800/80 border border-teal-700/60',
+    violet: 'bg-violet-700/30 text-violet-300 hover:bg-violet-700/50 border border-violet-500/45',
+    amber: 'bg-amber-900/45 text-amber-300 hover:bg-amber-800/55 border border-amber-700/60',
+    emerald: 'bg-emerald-900/50 text-emerald-300 hover:bg-emerald-800/60 border border-emerald-700/60',
+    outline: 'bg-transparent text-frost-200 border border-obsidian-400 hover:bg-obsidian-700 hover:border-teal-500/60',
+    ghost: 'bg-transparent text-frost-300 hover:bg-obsidian-700 hover:text-frost-100',
   };
 
   const sizeStyles = {

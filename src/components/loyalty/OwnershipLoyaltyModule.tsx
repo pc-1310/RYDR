@@ -1,12 +1,12 @@
 import React from 'react';
-import { 
-  Crown, 
-  ShieldCheck, 
-  Plane, 
-  MapPin, 
-  Award, 
-  Key, 
-  FileCheck, 
+import {
+  Crown,
+  ShieldCheck,
+  Plane,
+  MapPin,
+  Award,
+  Key,
+  FileCheck,
   TreePine,
   ArrowUpRight
 } from 'lucide-react';
@@ -53,21 +53,21 @@ export const OwnershipLoyaltyModule: React.FC = () => {
   return (
     <div className="space-y-8 animate-fadeIn">
       {/* Header Banner */}
-      <div className="bg-white/95 rounded-3xl p-6 sm:p-8 border border-lavender/80 shadow-soft">
+      <div className="bg-obsidian-800/95 rounded-3xl p-6 sm:p-8 border border-obsidian-500/80 shadow-soft">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="font-serif text-2xl sm:text-3xl font-semibold text-plum">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="font-serif text-2xl sm:text-3xl font-semibold text-frost-100">
                 Ownership & Loyalty
               </span>
-              <Badge variant="peach" size="sm" icon={<Crown className="w-3.5 h-3.5 text-peach-dark" />}>
+              <Badge variant="amber" size="sm" icon={<Crown className="w-3.5 h-3.5 text-amber-300" />}>
                 Obsidian Tier
               </Badge>
-              <Badge variant="sage" size="sm">
+              <Badge variant="emerald" size="sm">
                 Member #RYDR-OBS-8842
               </Badge>
             </div>
-            <p className="text-xs sm:text-sm text-plum-light max-w-2xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-frost-500 max-w-2xl leading-relaxed">
               Welcome to the inner circle of RYDR ownership. Privileges designed to elevate your transcontinental lifestyle far beyond the open road.
             </p>
           </div>
@@ -76,7 +76,7 @@ export const OwnershipLoyaltyModule: React.FC = () => {
             <Button
               variant="primary"
               size="sm"
-              icon={<Award className="w-3.5 h-3.5 text-peach" />}
+              icon={<Award className="w-3.5 h-3.5 text-obsidian-950" />}
               onClick={() => alert("Digital Concierge Pass exported to Apple Wallet / Google Wallet.")}
             >
               Add to Mobile Wallet
@@ -88,56 +88,56 @@ export const OwnershipLoyaltyModule: React.FC = () => {
       {/* Holographic Obsidian Membership Card */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
         <div className="lg:col-span-6">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-plum via-plum-dark to-[#100D15] text-white p-7 sm:p-8 shadow-soft-lg border border-lavender-accent/40 aspect-[16/10] flex flex-col justify-between group">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-obsidian-700 via-obsidian-900 to-obsidian-950 text-frost-100 p-7 sm:p-8 shadow-soft-lg border border-teal-500/40 aspect-[16/10] flex flex-col justify-between group">
             {/* Subtle holographic sheen effect */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-lavender-accent/15 to-peach/20 opacity-70 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-            <div className="absolute -right-16 -top-16 w-52 h-52 rounded-full bg-peach/10 blur-2xl pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-teal-500/15 to-violet-500/20 opacity-75 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            <div className="absolute -right-16 -top-16 w-52 h-52 rounded-full bg-teal-500/15 blur-2xl pointer-events-none" />
 
             {/* Card Header */}
             <div className="relative z-10 flex items-start justify-between">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-serif text-2xl font-bold tracking-widest text-ivory">
+                  <span className="font-serif text-2xl font-bold tracking-widest text-frost-100">
                     RYDR
                   </span>
-                  <span className="text-[10px] tracking-widest uppercase font-semibold text-peach bg-peach/10 border border-peach/30 px-2 py-0.5 rounded-full">
+                  <span className="text-[10px] tracking-widest uppercase font-semibold text-amber-300 bg-amber-900/40 border border-amber-500/40 px-2 py-0.5 rounded-full">
                     Obsidian Circle
                   </span>
                 </div>
-                <p className="text-[10px] text-ivory/60 tracking-wider uppercase mt-1">
+                <p className="text-[10px] text-frost-500 tracking-wider uppercase mt-1">
                   Private Client Membership
                 </p>
               </div>
-              <div className="w-10 h-10 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center">
-                <Crown className="w-5 h-5 text-peach" />
+              <div className="w-10 h-10 rounded-2xl bg-obsidian-800/80 backdrop-blur-md border border-teal-500/35 flex items-center justify-center">
+                <Crown className="w-5 h-5 text-amber-300" />
               </div>
             </div>
 
             {/* Chip & NFC Graphic */}
             <div className="relative z-10 my-4 flex items-center gap-3">
-              <div className="w-11 h-8 rounded-lg bg-gradient-to-r from-amber-200 to-amber-400 border border-amber-500/40 shadow-inner flex items-center justify-center">
-                <div className="w-8 h-5 border border-amber-700/30 rounded-xs" />
+              <div className="w-11 h-8 rounded-lg bg-gradient-to-r from-amber-300 to-amber-500 border border-amber-400/50 shadow-inner flex items-center justify-center">
+                <div className="w-8 h-5 border border-amber-800/40 rounded-xs" />
               </div>
-              <span className="text-[10px] font-mono tracking-widest text-ivory/70">
+              <span className="text-[10px] font-mono tracking-widest text-teal-200/80">
                 SECURE NFC PASSPORT
               </span>
             </div>
 
             {/* Card Footer */}
-            <div className="relative z-10 flex items-end justify-between border-t border-white/10 pt-4">
+            <div className="relative z-10 flex items-end justify-between border-t border-obsidian-500/70 pt-4">
               <div>
-                <p className="text-[10px] text-ivory/60 uppercase tracking-widest font-mono">
+                <p className="text-[10px] text-frost-600 uppercase tracking-widest font-mono">
                   Cardholder
                 </p>
-                <p className="font-serif text-lg font-medium tracking-wide text-ivory">
+                <p className="font-serif text-lg font-medium tracking-wide text-frost-100">
                   {CLIENT_PROFILE.name}
                 </p>
               </div>
               <div className="text-right">
-                <p className="text-[10px] text-ivory/60 uppercase tracking-widest font-mono">
+                <p className="text-[10px] text-frost-600 uppercase tracking-widest font-mono">
                   Member ID
                 </p>
-                <p className="font-mono text-xs font-semibold text-peach tracking-wider">
+                <p className="font-mono text-xs font-semibold text-teal-300 tracking-wider">
                   {CLIENT_PROFILE.memberId}
                 </p>
               </div>
@@ -147,37 +147,37 @@ export const OwnershipLoyaltyModule: React.FC = () => {
 
         {/* Member Tier Benefits Summary */}
         <div className="lg:col-span-6 space-y-4">
-          <div className="p-6 rounded-3xl bg-white border border-lavender/80 shadow-soft space-y-4">
+          <div className="p-6 rounded-3xl bg-obsidian-800 border border-obsidian-500/80 shadow-soft space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <span className="text-[11px] uppercase tracking-wider font-semibold text-plum-muted block">
+                <span className="text-[11px] uppercase tracking-wider font-semibold text-frost-600 block">
                   Obsidian Tier Status
                 </span>
-                <h4 className="font-serif text-xl font-semibold text-plum">
+                <h4 className="font-serif text-xl font-semibold text-frost-100">
                   Julian Vance • Elite Status
                 </h4>
               </div>
-              <Badge variant="sage" size="sm">
+              <Badge variant="emerald" size="sm">
                 Active Through 2028
               </Badge>
             </div>
 
-            <p className="text-xs text-plum-light leading-relaxed">
+            <p className="text-xs text-frost-500 leading-relaxed">
               Your membership privileges renew annually with zero maintenance fees for all verified RYDR owners. All experiences include personal concierge dispatch.
             </p>
 
             <div className="grid grid-cols-2 gap-3 pt-2">
-              <div className="p-3 rounded-2xl bg-ivory border border-lavender/50">
-                <span className="text-[10px] uppercase font-semibold text-plum-muted block">
+              <div className="p-3 rounded-2xl bg-obsidian-900 border border-obsidian-500/70">
+                <span className="text-[10px] uppercase font-semibold text-frost-600 block">
                   Concierge Desk
                 </span>
-                <span className="text-xs font-semibold text-plum block">24/7 Dedicated</span>
+                <span className="text-xs font-semibold text-frost-100 block">24/7 Dedicated</span>
               </div>
-              <div className="p-3 rounded-2xl bg-ivory border border-lavender/50">
-                <span className="text-[10px] uppercase font-semibold text-plum-muted block">
+              <div className="p-3 rounded-2xl bg-obsidian-900 border border-obsidian-500/70">
+                <span className="text-[10px] uppercase font-semibold text-frost-600 block">
                   Valet Dispatches
                 </span>
-                <span className="text-xs font-semibold text-plum block">Unlimited Global</span>
+                <span className="text-xs font-semibold text-frost-100 block">Unlimited Global</span>
               </div>
             </div>
           </div>
@@ -187,10 +187,10 @@ export const OwnershipLoyaltyModule: React.FC = () => {
       {/* Obsidian Privileges Grid */}
       <div className="space-y-4">
         <div>
-          <h3 className="font-serif text-2xl font-semibold text-plum tracking-tight">
+          <h3 className="font-serif text-2xl font-semibold text-frost-100 tracking-tight">
             Curated Member Privileges
           </h3>
-          <p className="text-xs text-plum-light">
+          <p className="text-xs text-frost-500">
             Exclusive gatherings and bespoke partnerships reserved for Obsidian tier owners
           </p>
         </div>
@@ -201,33 +201,33 @@ export const OwnershipLoyaltyModule: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="bg-white p-6 rounded-3xl border border-lavender/80 shadow-soft hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between"
+                className="bg-obsidian-800 p-6 rounded-3xl border border-obsidian-500/80 hover:border-teal-500/50 shadow-soft hover:shadow-soft-lg transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <div className="w-10 h-10 rounded-2xl bg-ivory flex items-center justify-center text-plum border border-lavender/60">
-                      <Icon className="w-5 h-5 text-lavender-deep" />
+                    <div className="w-10 h-10 rounded-2xl bg-obsidian-900 flex items-center justify-center border border-obsidian-500/70">
+                      <Icon className="w-5 h-5 text-teal-400" />
                     </div>
-                    <Badge variant={p.status === 'Active Pass' ? 'sage' : 'lavender'} size="sm">
+                    <Badge variant={p.status === 'Active Pass' ? 'emerald' : 'teal'} size="sm">
                       {p.status}
                     </Badge>
                   </div>
-                  <span className="text-[10px] uppercase font-semibold text-plum-muted tracking-wider block mb-1">
+                  <span className="text-[10px] uppercase font-semibold text-frost-600 tracking-wider block mb-1">
                     {p.subtitle}
                   </span>
-                  <h4 className="font-serif text-lg font-semibold text-plum mb-2">
+                  <h4 className="font-serif text-lg font-semibold text-frost-100 mb-2">
                     {p.title}
                   </h4>
-                  <p className="text-xs text-plum-light leading-relaxed">
+                  <p className="text-xs text-frost-500 leading-relaxed">
                     {p.desc}
                   </p>
                 </div>
 
-                <div className="pt-4 mt-4 border-t border-lavender/40 flex items-center justify-between text-xs font-semibold text-plum">
-                  <span className="text-plum-muted font-normal">{p.date}</span>
-                  <button 
+                <div className="pt-4 mt-4 border-t border-obsidian-500/60 flex items-center justify-between text-xs font-semibold text-frost-200">
+                  <span className="text-frost-600 font-normal">{p.date}</span>
+                  <button
                     onClick={() => alert(`RSVP requested for ${p.title}. Clara Beauchamp will confirm your credentials.`)}
-                    className="text-plum hover:text-lavender-deep flex items-center gap-1 cursor-pointer"
+                    className="text-teal-400 hover:text-teal-300 flex items-center gap-1 cursor-pointer"
                   >
                     <span>Reserve Privilege</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -240,57 +240,57 @@ export const OwnershipLoyaltyModule: React.FC = () => {
       </div>
 
       {/* Digital Vehicle Passport & Carbon Offset */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-lavender/80 shadow-soft space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-lavender/60">
+      <div className="bg-obsidian-800 rounded-3xl p-6 sm:p-8 border border-obsidian-500/80 shadow-soft space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-obsidian-500/70">
           <div>
-            <h3 className="font-serif text-2xl font-semibold text-plum tracking-tight">
+            <h3 className="font-serif text-2xl font-semibold text-frost-100 tracking-tight">
               Digital Vehicle Passport
             </h3>
-            <p className="text-xs text-plum-light">
+            <p className="text-xs text-frost-500">
               Immutable provenance, residual equity certificate & sustainability telemetry
             </p>
           </div>
-          <Badge variant="plum" size="sm" icon={<FileCheck className="w-3.5 h-3.5" />}>
+          <Badge variant="obsidian" size="sm" icon={<FileCheck className="w-3.5 h-3.5 text-teal-400" />}>
             Verified Cryptographic Certificate
           </Badge>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="p-4 rounded-2xl bg-ivory border border-lavender/60 space-y-2">
-            <div className="flex items-center gap-2 text-xs font-semibold text-plum">
-              <TreePine className="w-4 h-4 text-sage-dark" />
+          <div className="p-4 rounded-2xl bg-obsidian-900 border border-obsidian-500/70 space-y-2">
+            <div className="flex items-center gap-2 text-xs font-semibold text-frost-200">
+              <TreePine className="w-4 h-4 text-emerald-400" />
               <span>Carbon Offset Neutrality</span>
             </div>
-            <div className="font-serif text-2xl font-bold text-plum">
+            <div className="font-serif text-2xl font-bold text-frost-100">
               14.8 Metric Tons
             </div>
-            <p className="text-[11px] text-plum-light">
+            <p className="text-[11px] text-frost-500">
               100% neutralized via RYDR Scandinavian Reforestation Fund in northern Sweden.
             </p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-ivory border border-lavender/60 space-y-2">
-            <div className="flex items-center gap-2 text-xs font-semibold text-plum">
-              <Award className="w-4 h-4 text-peach-dark" />
+          <div className="p-4 rounded-2xl bg-obsidian-900 border border-obsidian-500/70 space-y-2">
+            <div className="flex items-center gap-2 text-xs font-semibold text-frost-200">
+              <Award className="w-4 h-4 text-amber-400" />
               <span>Guaranteed Residual Equity</span>
             </div>
-            <div className="font-serif text-2xl font-bold text-plum">
+            <div className="font-serif text-2xl font-bold text-frost-100">
               $114,200 USD
             </div>
-            <p className="text-[11px] text-plum-light">
+            <p className="text-[11px] text-frost-500">
               Guaranteed factory trade-in equity under Obsidian Portfolio terms through 2028.
             </p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-ivory border border-lavender/60 space-y-2">
-            <div className="flex items-center gap-2 text-xs font-semibold text-plum">
-              <ShieldCheck className="w-4 h-4 text-lavender-deep" />
+          <div className="p-4 rounded-2xl bg-obsidian-900 border border-obsidian-500/70 space-y-2">
+            <div className="flex items-center gap-2 text-xs font-semibold text-frost-200">
+              <ShieldCheck className="w-4 h-4 text-teal-400" />
               <span>Factory Warranty</span>
             </div>
-            <div className="font-serif text-2xl font-bold text-plum">
+            <div className="font-serif text-2xl font-bold text-frost-100">
               Bumper-to-Bumper
             </div>
-            <p className="text-[11px] text-plum-light">
+            <p className="text-[11px] text-frost-500">
               8-Year / 100,000-Mile comprehensive high-voltage battery & inverter coverage.
             </p>
           </div>

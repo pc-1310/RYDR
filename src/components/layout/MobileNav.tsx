@@ -20,7 +20,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
   ];
 
   return (
-    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/90 backdrop-blur-lg border-t border-lavender/80 px-2 py-2 safe-area-pb">
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-30 bg-obsidian-900/95 backdrop-blur-lg border-t border-obsidian-500/80 px-2 py-2 safe-area-pb">
       <div className="flex items-center justify-around">
         {items.map((item) => {
           const Icon = item.icon;
@@ -31,13 +31,13 @@ export const MobileNav: React.FC<MobileNavProps> = ({
               onClick={() => onSelectModule(item.id)}
               className={`flex flex-col items-center justify-center py-1 px-2.5 rounded-xl transition-all cursor-pointer ${
                 isActive
-                  ? 'text-plum font-semibold'
-                  : 'text-plum-muted hover:text-plum'
+                  ? 'text-teal-300 font-semibold'
+                  : 'text-frost-600 hover:text-frost-200'
               }`}
             >
               <div
                 className={`p-1.5 rounded-lg transition-colors ${
-                  isActive ? 'bg-lavender text-plum' : 'text-plum-muted'
+                  isActive ? 'bg-teal-900/70 text-teal-300 border border-teal-500/40' : 'text-frost-600'
                 }`}
               >
                 <Icon className="w-5 h-5" />

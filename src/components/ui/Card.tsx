@@ -3,7 +3,7 @@ import React from 'react';
 interface CardProps {
   children: React.ReactNode;
   className?: string;
-  variant?: 'default' | 'lavender' | 'ivory' | 'plum' | 'outline' | 'glass';
+  variant?: 'default' | 'teal' | 'slate' | 'obsidian' | 'outline' | 'glass';
   hoverEffect?: boolean;
   onClick?: () => void;
 }
@@ -16,16 +16,16 @@ export const Card: React.FC<CardProps> = ({
   onClick,
 }) => {
   const variantStyles = {
-    default: 'bg-white border border-lavender/80 shadow-soft',
-    lavender: 'bg-lavender/50 border border-lavender-accent/40 shadow-soft',
-    ivory: 'bg-ivory-200 border border-ivory-300 shadow-soft',
-    plum: 'bg-plum text-ivory border border-plum-light/30 shadow-soft-lg',
-    outline: 'bg-transparent border border-plum/15',
+    default: 'bg-obsidian-800 border border-obsidian-500/80 shadow-soft',
+    teal: 'bg-teal-950/70 border border-teal-800/60 shadow-soft',
+    slate: 'bg-obsidian-700 border border-obsidian-500 shadow-soft',
+    obsidian: 'bg-obsidian-900 text-frost-100 border border-obsidian-500/70 shadow-soft-lg',
+    outline: 'bg-transparent border border-obsidian-500',
     glass: 'glass-card shadow-soft',
   };
 
-  const hoverClass = hoverEffect 
-    ? 'transition-all duration-300 hover:shadow-soft-lg hover:-translate-y-0.5 cursor-pointer' 
+  const hoverClass = hoverEffect
+    ? 'transition-all duration-300 hover:shadow-soft-lg hover:border-teal-500/50 hover:-translate-y-0.5 cursor-pointer'
     : '';
 
   return (
