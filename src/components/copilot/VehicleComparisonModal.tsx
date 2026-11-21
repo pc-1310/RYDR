@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar, Calculator, Sparkles } from 'lucide-react';
 import type { Vehicle } from '../../types';
+import { formatINR } from '../../types';
 import { Modal } from '../ui/Modal';
 import { Button } from '../ui/Button';
 import { Badge } from '../ui/Badge';
@@ -26,12 +27,12 @@ export const VehicleComparisonModal: React.FC<VehicleComparisonModalProps> = ({
   const comparisonRows = [
     { label: 'Category', valA: vehicleA.category, valB: vehicleB.category },
     { label: 'Propulsion', valA: vehicleA.propulsion, valB: vehicleB.propulsion },
-    { label: 'Starting Price', valA: `$${vehicleA.startingPrice.toLocaleString()}`, valB: `$${vehicleB.startingPrice.toLocaleString()}` },
-    { label: 'Est. Lease / Mo', valA: `~$${Math.round(vehicleA.startingPrice * 0.012).toLocaleString()}`, valB: `~$${Math.round(vehicleB.startingPrice * 0.012).toLocaleString()}` },
-    { label: 'Acceleration (0-60)', valA: vehicleA.acceleration, valB: vehicleB.acceleration },
+    { label: 'Ex-Showroom Price', valA: formatINR(vehicleA.startingPrice), valB: formatINR(vehicleB.startingPrice) },
+    { label: 'Est. EMI / Month', valA: `~₹${Math.round(vehicleA.startingPrice * 0.018).toLocaleString('en-IN')}/mo`, valB: `~₹${Math.round(vehicleB.startingPrice * 0.018).toLocaleString('en-IN')}/mo` },
+    { label: 'Acceleration (0-100 km/h)', valA: vehicleA.acceleration, valB: vehicleB.acceleration },
     { label: 'Power Output', valA: vehicleA.power, valB: vehicleB.power },
-    { label: 'Range / Range EPA', valA: vehicleA.rangeOrMpg, valB: vehicleB.rangeOrMpg },
-    { label: 'Top Track Speed', valA: vehicleA.topSpeed, valB: vehicleB.topSpeed },
+    { label: 'ARAI Range / Real-world', valA: vehicleA.rangeOrMpg, valB: vehicleB.rangeOrMpg },
+    { label: 'Top Speed', valA: vehicleA.topSpeed, valB: vehicleB.topSpeed },
     { label: 'Cabin Configuration', valA: vehicleA.seating, valB: vehicleB.seating },
   ];
 
@@ -39,8 +40,8 @@ export const VehicleComparisonModal: React.FC<VehicleComparisonModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title="Atelier Comparative Analysis"
-      subtitle="Side-by-side engineering specifications and lifestyle suitability"
+      title="Car Comparison & Spec Analysis"
+      subtitle="Side-by-side engineering specifications, real-world range, and monthly EMI"
       maxWidth="2xl"
     >
       <div className="space-y-6">
@@ -83,7 +84,7 @@ export const VehicleComparisonModal: React.FC<VehicleComparisonModalProps> = ({
                     onCalculateFinance(v);
                   }}
                 >
-                  Finance Spec
+                  EMI Calculator
                 </Button>
               </div>
             </div>
@@ -116,10 +117,10 @@ export const VehicleComparisonModal: React.FC<VehicleComparisonModalProps> = ({
         <div className="p-4 rounded-2xl bg-teal-950/60 border border-teal-700/50 text-xs">
           <div className="flex items-center gap-2 font-semibold text-frost-100 mb-1">
             <Sparkles className="w-4 h-4 text-teal-400" />
-            <span>AI Concierge Advisory Note:</span>
+            <span>AI Car Assistant Recommendation:</span>
           </div>
           <p className="text-frost-300 leading-relaxed">
-            Choose the <strong className="text-frost-100">{vehicleA.name}</strong> if priority leans toward acoustic isolation, low center-of-gravity touring, and zero local emissions. Choose the <strong className="text-frost-100">{vehicleB.name}</strong> if you demand multi-passenger grand touring, elevated all-weather stance, and hybrid range endurance.
+            Choose the <strong className="text-frost-100">{vehicleA.name}</strong> if your priority is whisper-quiet city refinement, low running cost, and rapid daily commute acceleration. Choose the <strong className="text-frost-100">{vehicleB.name}</strong> if you need higher ground clearance, family road-trip capability, and commanding highway presence.
           </p>
         </div>
       </div>

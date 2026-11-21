@@ -18,9 +18,9 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
 }) => {
   const [date, setDate] = useState('2026-04-15');
   const [timeSlot, setTimeSlot] = useState('11:00 AM');
-  const [locationType, setLocationType] = useState<'home' | 'office' | 'atelier'>('home');
-  const [address, setAddress] = useState('Bel Air Crest Rd, Los Angeles, CA 90077');
-  const [notes, setNotes] = useState('Please bring Nordic Teal leather swatches.');
+  const [locationType, setLocationType] = useState<'home' | 'office' | 'hub'>('home');
+  const [address, setAddress] = useState('Flat 402, Green Glen Layout, Bellandur, Bengaluru 560103');
+  const [notes, setNotes] = useState('Please bring Tan Brown seat sample and home wallbox charger info.');
   const [confirmed, setConfirmed] = useState(false);
 
   if (!vehicle) return null;
@@ -38,8 +38,8 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title="Private Door-to-Door Test Drive"
-      subtitle={`Experience the ${vehicle.name} in your everyday environment`}
+      title="Book Home Test Drive"
+      subtitle={`Experience the ${vehicle.name} on your daily commute and weekend routes`}
       maxWidth="lg"
     >
       {confirmed ? (
@@ -48,10 +48,10 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
             <Check className="w-8 h-8 text-emerald-400" />
           </div>
           <h4 className="font-serif text-2xl font-semibold text-frost-100">
-            Reservation Confirmed
+            Booking Confirmed
           </h4>
           <p className="text-xs text-frost-400 max-w-md mx-auto leading-relaxed">
-            Your private test drive for the <strong className="text-frost-100">{vehicle.name}</strong> has been secured for <strong className="text-teal-300">{date} at {timeSlot}</strong>. A RYDR Concierge Product Specialist will arrive in an enclosed transport with the preconditioned vehicle.
+            Your doorstep test drive for the <strong className="text-frost-100">{vehicle.name}</strong> has been scheduled for <strong className="text-teal-300">{date} at {timeSlot}</strong>. A RYDR Product Specialist will bring the vehicle directly to your address.
           </p>
         </div>
       ) : (
@@ -68,20 +68,20 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
               <p className="text-xs text-frost-500">{vehicle.acceleration} • {vehicle.propulsion}</p>
             </div>
             <Badge variant="emerald" size="sm">
-              Enclosed Delivery
+              Doorstep Delivery
             </Badge>
           </div>
 
           {/* Delivery Location Type */}
           <div>
             <label className="block text-xs font-semibold text-frost-200 mb-1.5">
-              Preferred Delivery Location
+              Preferred Test Drive Location
             </label>
             <div className="grid grid-cols-3 gap-2">
               {[
-                { id: 'home', label: 'Private Residence' },
-                { id: 'office', label: 'Executive Office' },
-                { id: 'atelier', label: 'RYDR Atelier Suite' },
+                { id: 'home', label: 'Home (HSR / Bellandur)' },
+                { id: 'office', label: 'Office Address' },
+                { id: 'hub', label: 'Indiranagar Hub' },
               ].map((loc) => (
                 <button
                   type="button"
@@ -100,7 +100,7 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
           </div>
 
           {/* Address Input */}
-          {locationType !== 'atelier' && (
+          {locationType !== 'hub' && (
             <div>
               <label className="block text-xs font-semibold text-frost-200 mb-1">
                 Drop-Off Address
@@ -147,10 +147,10 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
                   onChange={(e) => setTimeSlot(e.target.value)}
                   className="w-full text-xs text-frost-100 pl-9 pr-3 py-2.5 rounded-xl border border-obsidian-500 bg-obsidian-900 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/25"
                 >
-                  <option value="09:00 AM">09:00 AM (Morning Air)</option>
-                  <option value="11:00 AM">11:00 AM (Midday Preview)</option>
-                  <option value="02:30 PM">02:30 PM (Afternoon Highway)</option>
-                  <option value="05:30 PM">05:30 PM (Sunset Canyon Drive)</option>
+                  <option value="09:00 AM">09:00 AM (Morning City Commute)</option>
+                  <option value="11:30 AM">11:30 AM (Midday City Drive)</option>
+                  <option value="03:00 PM">03:00 PM (Afternoon Ring Road)</option>
+                  <option value="05:30 PM">05:30 PM (Evening Traffic & Comfort)</option>
                 </select>
               </div>
             </div>
@@ -159,7 +159,7 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
           {/* Bespoke Requests Note */}
           <div>
             <label className="block text-xs font-semibold text-frost-200 mb-1">
-              Bespoke Inquiries / Material Swatches to Bring
+              Special Requests / Specific Requirements
             </label>
             <textarea
               value={notes}
@@ -178,7 +178,7 @@ export const TestDriveModal: React.FC<TestDriveModalProps> = ({
               fullWidth
               icon={<Car className="w-4 h-4 text-obsidian-950" />}
             >
-              Confirm White-Glove Test Drive
+              Confirm Doorstep Test Drive
             </Button>
           </div>
         </form>

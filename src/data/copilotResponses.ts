@@ -14,36 +14,36 @@ export function generateSimulatedResponse(
     return {
       sender: 'assistant',
       isSimulated: true,
-      content: `I've prepared a side-by-side comparative analysis between the **RYDR Spectre GT** and the **RYDR Lumina Executive SUV**.\n\nWhile the Spectre GT delivers a sports-car center of gravity (0.21 Cd drag coefficient) and zero-emission acoustic tranquility for 340 miles, the Lumina Executive provides elevated sanctuary seating for up to 7, active hydraulic roll cancellation, and transcontinental 580-mile hybrid autonomy.\n\nTake a look at the tailored spec breakdown below:`,
+      content: `I've prepared a side-by-side comparison between the **RYDR Spectre EV** (₹21.50 Lakhs) and the **RYDR Lumina SUV** (₹24.80 Lakhs).\n\nWhile the Spectre EV is a streamlined electric sedan delivering 480 km range and nimble city handling, the Lumina SUV provides higher ground clearance (205 mm), flexible 5/7 seating, and family road-trip comfort.\n\nTake a look at the feature comparison below:`,
       comparisonVehicles: [spectre, lumina],
       suggestedFollowUps: [
-        "Calculate lease comparison for both",
-        "Book private viewing of the Spectre GT",
-        "Show interior trim options"
+        "Calculate EMI comparison for both",
+        "Book home test drive for Spectre EV",
+        "Explore interior colour options"
       ]
     };
   }
 
-  // 2. Financing & Lease Calculator Intent
-  if (query.includes('finance') || query.includes('lease') || query.includes('cost') || query.includes('monthly') || query.includes('price')) {
+  // 2. Financing & Lease / EMI Intent
+  if (query.includes('finance') || query.includes('lease') || query.includes('emi') || query.includes('cost') || query.includes('monthly') || query.includes('price')) {
     const spectre = LUXURY_VEHICLES.find(v => v.id === 'spectre-gt')!;
     return {
       sender: 'assistant',
       isSimulated: true,
-      content: `Here is a bespoke acquisition estimate for the **${spectre.name}** based on our current Obsidian Tier private portfolio terms.\n\nUnder our 36-month tailored lease schedule with an assumed $15,000 capital reduction, the estimated monthly investment is approximately **$1,680/mo** plus local taxes, including complimentary White-Glove Valet service and all scheduled atelier maintenance.`,
+      content: `Here is an estimated loan & EMI breakdown for the **${spectre.name}**.\n\nWith an ex-showroom price of **₹21.50 Lakhs** and an assumed down payment of **₹3,00,000** over a 60-month loan tenure at 8.5% interest, the estimated monthly EMI is approximately **₹37,950/mo**.\n\nThis includes your 8-Year/1,60,000 km battery warranty and 24/7 Roadside Assistance.`,
       financingDetails: {
         vehicleName: spectre.name,
         vehiclePrice: spectre.startingPrice,
-        monthlyPayment: 1680,
-        termMonths: 36,
-        downPayment: 15000,
-        apr: 3.4
+        monthlyPayment: 37950,
+        termMonths: 60,
+        downPayment: 300000,
+        apr: 8.5
       },
       suggestedVehicles: [spectre],
       suggestedFollowUps: [
-        "Adjust down payment to $25,000",
-        "Show cash purchase & tax incentives",
-        "Reserve private test drive"
+        "Adjust down payment to ₹5,00,000",
+        "Check 7-year loan EMI options",
+        "Book doorstep test drive"
       ]
     };
   }
@@ -60,28 +60,28 @@ export function generateSimulatedResponse(
     return {
       sender: 'assistant',
       isSimulated: true,
-      content: `Delighted to arrange this. As a privileged client, your test drive with the **${targetVehicle.name}** includes complimentary door-to-door concierge delivery to your private residence or executive office, accompanied by a dedicated RYDR product specialist.\n\nPlease select your preferred time slot and drop-off address via the reservation card below.`,
+      content: `Happy to arrange that! As a RYDR customer, your doorstep test drive with the **${targetVehicle.name}** includes free delivery to your home or office address in Bengaluru, accompanied by a product advisor.\n\nPlease choose your preferred date and time slot below:`,
       testDriveVehicle: targetVehicle,
       suggestedFollowUps: [
-        "Request weekend overnight trial",
-        "Send vehicle spec to my email",
-        "Inquire about bespoke paint sample delivery"
+        "Request weekend morning slot",
+        "Send brochure on WhatsApp",
+        "Check ex-showroom price list"
       ]
     };
   }
 
   // 4. Track / Performance Intent
-  if (query.includes('speed') || query.includes('track') || query.includes('fast') || query.includes('power') || query.includes('race') || query.includes('roadster')) {
+  if (query.includes('speed') || query.includes('track') || query.includes('fast') || query.includes('power') || query.includes('sport')) {
     const aether = LUXURY_VEHICLES.find(v => v.id === 'aether-roadster')!;
     return {
       sender: 'assistant',
       isSimulated: true,
-      content: `For unrelenting dynamics and track-bred precision, the **RYDR Aether Speedster** stands uncompromised. Engineered around a bespoke carbon-fiber monocoque with tri-motor torque vectoring pushing 890 HP, it accelerates from 0 to 60 mph in a blistering 2.3 seconds with track telemetry recording enabled.`,
+      content: `For spirited highway dynamics and instant acceleration, the **RYDR Aether Sport** is tuned for maximum excitement. With dual motors generating 420 HP, it accelerates from 0 to 100 km/h in 3.1 seconds with sport sound tuning enabled.`,
       suggestedVehicles: [aether],
       suggestedFollowUps: [
-        "Schedule private track session at Laguna Seca",
-        "Explore carbon monocoque specifications",
-        "Compare with Spectre GT"
+        "Check EV Driving & Safety Workshop",
+        "View Sport Mode sound demo",
+        "Compare with Spectre EV"
       ]
     };
   }
@@ -92,12 +92,12 @@ export function generateSimulatedResponse(
     return {
       sender: 'assistant',
       isSimulated: true,
-      content: `For seamless transcontinental journeys with family or companions, I highly recommend the **RYDR Lumina Executive**. It features an acoustically isolated cabin with reconfigurable 5 or 7 seating, dual wine chillers, and 580 miles of hybrid touring breadth that effortlessly handles mountain roads and city avenues alike.`,
+      content: `For family road trips and weekend highway drives, the **RYDR Lumina SUV** is an ideal fit. It offers high 205 mm ground clearance, spacious 5 or 7 seating, panoramic sunroof, and 520 km certified range that easily handles ghat roads and city potholes alike.`,
       suggestedVehicles: [lumina],
       suggestedFollowUps: [
         "Show 7-seat configuration layout",
-        "Schedule home demonstration",
-        "Compare with Elysian Saloon"
+        "Book doorstep test drive",
+        "Compare with Elysian Sedan"
       ]
     };
   }
@@ -114,15 +114,17 @@ export function generateSimulatedResponse(
     matched = [LUXURY_VEHICLES[0], LUXURY_VEHICLES[1]];
   }
 
+  const budgetLakhs = (filters.budgetMax / 100000).toFixed(1);
+
   return {
     sender: 'assistant',
     isSimulated: true,
-    content: `Based on your query and active atelier preferences (**${filters.propulsion}** propulsion, **${filters.primaryPriority}**, within up to **\$${filters.budgetMax.toLocaleString()}**), I have curated these bespoke configurations that best align with your lifestyle:`,
+    content: `Based on your preferences (**${filters.propulsion}**, **${filters.primaryPriority}**, budget up to **₹${budgetLakhs} Lakhs**), here are the curated models that best suit your requirements:`,
     suggestedVehicles: matched.slice(0, 2),
     suggestedFollowUps: [
       "Compare these two side-by-side",
-      "Configure interior upholstery in Atelier",
-      "Calculate 36-month lease estimates"
+      "Check interior themes in 360° Showroom",
+      "Calculate 5-year loan EMI options"
     ]
   };
 }

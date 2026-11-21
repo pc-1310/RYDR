@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Crown,
   ShieldCheck,
-  Plane,
+  Zap,
   MapPin,
   Award,
   Key,
@@ -17,33 +17,33 @@ import { Button } from '../ui/Button';
 export const OwnershipLoyaltyModule: React.FC = () => {
   const privileges = [
     {
-      title: 'Transalpine Grand Tour',
-      subtitle: 'Annual Obsidian Rally',
-      desc: 'Exclusive private passage across the Furka and Julier Passes in Switzerland, featuring boutique 5-star châteaux and factory support mechanics.',
-      date: 'September 12 - 18, 2026',
+      title: 'Weekend Owners Drive',
+      subtitle: 'RYDR Owners Club Convoy',
+      desc: 'Highway convoy drive from Bengaluru to Coorg / Lonavala featuring scenic routes, curated resort stay, and group dinner.',
+      date: 'September 12 - 14, 2026',
       status: 'Waitlist Reserved',
       icon: MapPin,
     },
     {
-      title: 'Private Airfield Track Days',
-      subtitle: 'Unlimited Telemetry Support',
-      desc: 'Private track sessions at Laguna Seca and Thermal Club with dedicated Michelin tire technicians and factory test drivers.',
-      date: 'Bi-Monthly Access',
+      title: 'EV Driving & Safety Workshop',
+      subtitle: 'Highway Range & Longevity',
+      desc: 'Highway range optimization tips, defensive driving drills, and live battery care masterclass with certified technical trainers.',
+      date: 'Bi-Monthly Sessions',
       status: 'Active Pass',
       icon: Crown,
     },
     {
-      title: 'NetJets Chauffeur Tarmac Transfer',
-      subtitle: 'Aviation Partnership',
-      desc: 'Direct tarmac access. Your RYDR vehicle meets your private aircraft stairs with luggage seamlessly transferred by white-glove security.',
-      date: 'On-Demand Global Hubs',
+      title: 'Free Fast-Charging Credits',
+      subtitle: 'Partner Highway Network',
+      desc: '500 kWh/year complimentary high-speed charging credits valid at over 350+ partner highway fast-chargers across India.',
+      date: 'Quarterly Renewal',
       status: 'Included',
-      icon: Plane,
+      icon: Zap,
     },
     {
-      title: 'White-Glove Airport Valet',
-      subtitle: 'LAX, JFK, SFO & LHR',
-      desc: 'Leave your keys at the VIP curbside. Your vehicle is charged, ceramic-washed, and pre-warmed for your return.',
+      title: 'Airport Lounge & Valet Parking',
+      subtitle: 'BLR, DEL, BOM & HYD',
+      desc: 'Complimentary airport lounge passes and reserved valet parking. Leave your keys — car is topped up, foam-washed, and cabin pre-cooled before you drive out.',
       date: 'Unlimited Usage',
       status: 'Included',
       icon: Key,
@@ -58,17 +58,17 @@ export const OwnershipLoyaltyModule: React.FC = () => {
           <div className="space-y-1">
             <div className="flex flex-wrap items-center gap-2">
               <span className="font-serif text-2xl sm:text-3xl font-semibold text-frost-100">
-                Ownership & Loyalty
+                My Benefits
               </span>
               <Badge variant="amber" size="sm" icon={<Crown className="w-3.5 h-3.5 text-amber-300" />}>
-                Obsidian Tier
+                Gold Member
               </Badge>
               <Badge variant="emerald" size="sm">
-                Member #RYDR-OBS-8842
+                Member #RYDR-GOLD-8842
               </Badge>
             </div>
             <p className="text-xs sm:text-sm text-frost-500 max-w-2xl leading-relaxed">
-              Welcome to the inner circle of RYDR ownership. Privileges designed to elevate your transcontinental lifestyle far beyond the open road.
+              Smart perks designed for your daily commute and weekend getaways.
             </p>
           </div>
 
@@ -77,7 +77,7 @@ export const OwnershipLoyaltyModule: React.FC = () => {
               variant="primary"
               size="sm"
               icon={<Award className="w-3.5 h-3.5 text-obsidian-950" />}
-              onClick={() => alert("Digital Concierge Pass exported to Apple Wallet / Google Wallet.")}
+              onClick={() => alert("Digital Member Pass saved to phone wallet.")}
             >
               Add to Mobile Wallet
             </Button>
@@ -85,7 +85,7 @@ export const OwnershipLoyaltyModule: React.FC = () => {
         </div>
       </div>
 
-      {/* Holographic Obsidian Membership Card */}
+      {/* Holographic Membership Card */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
         <div className="lg:col-span-6">
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-obsidian-700 via-obsidian-900 to-obsidian-950 text-frost-100 p-7 sm:p-8 shadow-soft-lg border border-teal-500/40 aspect-[16/10] flex flex-col justify-between group">
@@ -101,11 +101,11 @@ export const OwnershipLoyaltyModule: React.FC = () => {
                     RYDR
                   </span>
                   <span className="text-[10px] tracking-widest uppercase font-semibold text-amber-300 bg-amber-900/40 border border-amber-500/40 px-2 py-0.5 rounded-full">
-                    Obsidian Circle
+                    Owners Club
                   </span>
                 </div>
                 <p className="text-[10px] text-frost-500 tracking-wider uppercase mt-1">
-                  Private Client Membership
+                  Plus Membership Pass
                 </p>
               </div>
               <div className="w-10 h-10 rounded-2xl bg-obsidian-800/80 backdrop-blur-md border border-teal-500/35 flex items-center justify-center">
@@ -119,7 +119,7 @@ export const OwnershipLoyaltyModule: React.FC = () => {
                 <div className="w-8 h-5 border border-amber-800/40 rounded-xs" />
               </div>
               <span className="text-[10px] font-mono tracking-widest text-teal-200/80">
-                SECURE NFC PASSPORT
+                SECURE SMART PASS
               </span>
             </div>
 
@@ -151,10 +151,10 @@ export const OwnershipLoyaltyModule: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <span className="text-[11px] uppercase tracking-wider font-semibold text-frost-600 block">
-                  Obsidian Tier Status
+                  Membership Tier Status
                 </span>
                 <h4 className="font-serif text-xl font-semibold text-frost-100">
-                  Julian Vance • Elite Status
+                  {CLIENT_PROFILE.name} • Gold Member
                 </h4>
               </div>
               <Badge variant="emerald" size="sm">
@@ -163,35 +163,35 @@ export const OwnershipLoyaltyModule: React.FC = () => {
             </div>
 
             <p className="text-xs text-frost-500 leading-relaxed">
-              Your membership privileges renew annually with zero maintenance fees for all verified RYDR owners. All experiences include personal concierge dispatch.
+              Smart perks designed for your daily commute and weekend getaways. All benefits renew annually with zero maintenance charges for verified RYDR owners.
             </p>
 
             <div className="grid grid-cols-2 gap-3 pt-2">
               <div className="p-3 rounded-2xl bg-obsidian-900 border border-obsidian-500/70">
                 <span className="text-[10px] uppercase font-semibold text-frost-600 block">
-                  Concierge Desk
+                  Roadside Assistance
                 </span>
-                <span className="text-xs font-semibold text-frost-100 block">24/7 Dedicated</span>
+                <span className="text-xs font-semibold text-frost-100 block">24/7 Dedicated (RSA)</span>
               </div>
               <div className="p-3 rounded-2xl bg-obsidian-900 border border-obsidian-500/70">
                 <span className="text-[10px] uppercase font-semibold text-frost-600 block">
-                  Valet Dispatches
+                  Free Service Pickup & Drop
                 </span>
-                <span className="text-xs font-semibold text-frost-100 block">Unlimited Global</span>
+                <span className="text-xs font-semibold text-frost-100 block">4x / Year Included</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Obsidian Privileges Grid */}
+      {/* Member Perks & Offers Grid */}
       <div className="space-y-4">
         <div>
           <h3 className="font-serif text-2xl font-semibold text-frost-100 tracking-tight">
-            Curated Member Privileges
+            Member Perks & Offers
           </h3>
           <p className="text-xs text-frost-500">
-            Exclusive gatherings and bespoke partnerships reserved for Obsidian tier owners
+            Exclusive community drives, charging benefits, and travel privileges
           </p>
         </div>
 
@@ -226,10 +226,10 @@ export const OwnershipLoyaltyModule: React.FC = () => {
                 <div className="pt-4 mt-4 border-t border-obsidian-500/60 flex items-center justify-between text-xs font-semibold text-frost-200">
                   <span className="text-frost-600 font-normal">{p.date}</span>
                   <button
-                    onClick={() => alert(`RSVP requested for ${p.title}. Clara Beauchamp will confirm your credentials.`)}
+                    onClick={() => alert(`Registration confirmed for ${p.title}. Details sent to your email.`)}
                     className="text-teal-400 hover:text-teal-300 flex items-center gap-1 cursor-pointer"
                   >
-                    <span>Reserve Privilege</span>
+                    <span>View Details</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
@@ -239,19 +239,19 @@ export const OwnershipLoyaltyModule: React.FC = () => {
         </div>
       </div>
 
-      {/* Digital Vehicle Passport & Carbon Offset */}
+      {/* Digital RC & Car Health Report */}
       <div className="bg-obsidian-800 rounded-3xl p-6 sm:p-8 border border-obsidian-500/80 shadow-soft space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-obsidian-500/70">
           <div>
             <h3 className="font-serif text-2xl font-semibold text-frost-100 tracking-tight">
-              Digital Vehicle Passport
+              Digital RC & Car Health Report
             </h3>
             <p className="text-xs text-frost-500">
-              Immutable provenance, residual equity certificate & sustainability telemetry
+              Verified service history, assured resale value & fuel savings tracker
             </p>
           </div>
           <Badge variant="obsidian" size="sm" icon={<FileCheck className="w-3.5 h-3.5 text-teal-400" />}>
-            Verified Cryptographic Certificate
+            Verified Digital Record
           </Badge>
         </div>
 
@@ -259,39 +259,39 @@ export const OwnershipLoyaltyModule: React.FC = () => {
           <div className="p-4 rounded-2xl bg-obsidian-900 border border-obsidian-500/70 space-y-2">
             <div className="flex items-center gap-2 text-xs font-semibold text-frost-200">
               <TreePine className="w-4 h-4 text-emerald-400" />
-              <span>Carbon Offset Neutrality</span>
+              <span>CO₂ Saved & Fuel Savings</span>
             </div>
             <div className="font-serif text-2xl font-bold text-frost-100">
-              14.8 Metric Tons
+              1.8 Tons CO₂ Saved
             </div>
             <p className="text-[11px] text-frost-500">
-              100% neutralized via RYDR Scandinavian Reforestation Fund in northern Sweden.
+              Approximately ₹1.4 Lakhs saved on fuel costs compared to petrol sedans.
             </p>
           </div>
 
           <div className="p-4 rounded-2xl bg-obsidian-900 border border-obsidian-500/70 space-y-2">
             <div className="flex items-center gap-2 text-xs font-semibold text-frost-200">
               <Award className="w-4 h-4 text-amber-400" />
-              <span>Guaranteed Residual Equity</span>
+              <span>Assured Buyback Value</span>
             </div>
             <div className="font-serif text-2xl font-bold text-frost-100">
-              $114,200 USD
+              ₹12.5 Lakhs
             </div>
             <p className="text-[11px] text-frost-500">
-              Guaranteed factory trade-in equity under Obsidian Portfolio terms through 2028.
+              Guaranteed assured buyback value after 3 years under RYDR Assured program.
             </p>
           </div>
 
           <div className="p-4 rounded-2xl bg-obsidian-900 border border-obsidian-500/70 space-y-2">
             <div className="flex items-center gap-2 text-xs font-semibold text-frost-200">
               <ShieldCheck className="w-4 h-4 text-teal-400" />
-              <span>Factory Warranty</span>
+              <span>8-Year / 1,60,000 km</span>
             </div>
             <div className="font-serif text-2xl font-bold text-frost-100">
-              Bumper-to-Bumper
+              Battery Warranty
             </div>
             <p className="text-[11px] text-frost-500">
-              8-Year / 100,000-Mile comprehensive high-voltage battery & inverter coverage.
+              Comprehensive 8-Year / 1,60,000 km manufacturer warranty on battery and motor.
             </p>
           </div>
         </div>

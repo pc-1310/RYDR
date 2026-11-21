@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Check, Send } from 'lucide-react';
 import type { Vehicle } from '../../types';
+import { formatINR } from '../../types';
 import { Modal } from '../ui/Modal';
 import { Button } from '../ui/Button';
 import { Badge } from '../ui/Badge';
@@ -16,20 +17,22 @@ export const FinancingModal: React.FC<FinancingModalProps> = ({
   onClose,
   vehicle,
 }) => {
-  const [termMonths, setTermMonths] = useState<number>(36);
-  const [downPayment, setDownPayment] = useState<number>(15000);
-  const [planType, setPlanType] = useState<'lease' | 'purchase'>('lease');
+  const [termMonths, setTermMonths] = useState<number>(60);
+  const [downPayment, setDownPayment] = useState<number>(300000);
+  const [planType, setPlanType] = useState<'loan' | 'lease'>('loan');
   const [submitted, setSubmitted] = useState<boolean>(false);
 
   if (!vehicle) return null;
 
-  // Financial calculations
+  // Financial calculations in INR
   const price = vehicle.startingPrice;
-  const netAmount = Math.max(0, price - downPayment);
-  const interestRate = planType === 'lease' ? 0.032 : 0.045;
-  const monthlyPayment = planType === 'lease'
-    ? Math.round((netAmount * 0.55) / termMonths + (netAmount * (interestRate / 12)))
-    : Math.round((netAmount * (interestRate / 12)) / (1 - Math.pow(1 + interestRate / 12, -termMonths)));
+  const netLoanAmount = Math.max(0, price - downPayment);
+  const annualInterestRate = planType === 'loan' ? 0.085 : 0.075;
+  const monthlyRate = annualInterestRate / 12;
+  const monthlyPayment = Math.round(
+    (netLoanAmount * monthlyRate * Math.pow(1 + monthlyRate, termMonths)) /
+    (Math.pow(1 + monthlyRate, termMonths) - 1)
+  );
 
   const handleConfirm = () => {
     setSubmitted(true);
@@ -43,8 +46,8 @@ export const FinancingModal: React.FC<FinancingModalProps> = ({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title="Bespoke Acquisition Calculator"
-      subtitle={`Tailored financial arrangement for ${vehicle.name}`}
+      title="EMI & Loan Calculator"
+      subtitle={`Tailored financing plan for ${vehicle.name}`}
       maxWidth="lg"
     >
       <div className="space-y-6">
@@ -60,16 +63,26 @@ export const FinancingModal: React.FC<FinancingModalProps> = ({
               {vehicle.name}
             </h4>
             <p className="text-xs text-frost-500 truncate">
-              MSRP Base: ${vehicle.startingPrice.toLocaleString()} • {vehicle.propulsion}
+              Ex-Showroom: {formatINR(vehicle.startingPrice)} • {vehicle.propulsion}
             </p>
           </div>
           <Badge variant="amber" size="sm">
-            Obsidian Privileged Rates
+            Special Rate 8.5%
           </Badge>
         </div>
 
         {/* Plan Type Selector */}
         <div className="grid grid-cols-2 gap-2 p-1 bg-obsidian-900 rounded-2xl border border-obsidian-500/80">
+          <button
+            onClick={() => setPlanType('loan')}
+            className={`py-2.5 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
+              planType === 'loan'
+                ? 'bg-teal-500 text-obsidian-950 shadow-soft'
+                : 'text-frost-500 hover:text-frost-100'
+            }`}
+          >
+            Bank Auto Loan (EMI)
+          </button>
           <button
             onClick={() => setPlanType('lease')}
             className={`py-2.5 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
@@ -78,17 +91,7 @@ export const FinancingModal: React.FC<FinancingModalProps> = ({
                 : 'text-frost-500 hover:text-frost-100'
             }`}
           >
-            Atelier Bespoke Lease (Recommended)
-          </button>
-          <button
-            onClick={() => setPlanType('purchase')}
-            className={`py-2.5 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
-              planType === 'purchase'
-                ? 'bg-teal-500 text-obsidian-950 shadow-soft'
-                : 'text-frost-500 hover:text-frost-100'
-            }`}
-          >
-            Private Portfolio Financing
+            Corporate Smart Lease
           </button>
         </div>
 
@@ -96,11 +99,11 @@ export const FinancingModal: React.FC<FinancingModalProps> = ({
         <div className="space-y-4">
           <div>
             <div className="flex items-center justify-between text-xs text-frost-300 font-medium mb-2">
-              <span>Term Duration</span>
-              <strong className="text-sm font-serif text-teal-300">{termMonths} Months</strong>
+              <span>Loan Tenure</span>
+              <strong className="text-sm font-serif text-teal-300">{termMonths} Months ({(termMonths / 12).toFixed(0)} Years)</strong>
             </div>
             <div className="grid grid-cols-4 gap-2">
-              {[24, 36, 48, 60].map((t) => (
+              {[36, 48, 60, 84].map((t) => (
                 <button
                   key={t}
                   onClick={() => setTermMonths(t)}
@@ -118,22 +121,22 @@ export const FinancingModal: React.FC<FinancingModalProps> = ({
 
           <div>
             <div className="flex items-center justify-between text-xs text-frost-300 font-medium mb-1">
-              <span>Initial Capital Reduction (Down Payment)</span>
-              <strong className="text-sm font-serif text-teal-300">${downPayment.toLocaleString()}</strong>
+              <span>Down Payment</span>
+              <strong className="text-sm font-serif text-teal-300">{formatINR(downPayment)}</strong>
             </div>
             <input
               type="range"
-              min="5000"
-              max="50000"
-              step="2500"
+              min="100000"
+              max="1000000"
+              step="50000"
               value={downPayment}
               onChange={(e) => setDownPayment(Number(e.target.value))}
               className="w-full accent-teal-500 cursor-pointer"
             />
             <div className="flex justify-between text-[10px] text-frost-600 mt-1">
-              <span>$5,000</span>
-              <span>$25,000</span>
-              <span>$50,000</span>
+              <span>₹1.0 Lakh</span>
+              <span>₹5.0 Lakhs</span>
+              <span>₹10.0 Lakhs</span>
             </div>
           </div>
         </div>
@@ -141,14 +144,14 @@ export const FinancingModal: React.FC<FinancingModalProps> = ({
         {/* Result Card */}
         <div className="p-5 rounded-2xl bg-teal-950/60 border border-teal-700/50 text-center space-y-2">
           <span className="text-[11px] uppercase tracking-wider text-teal-300 font-semibold">
-            Estimated Monthly Investment
+            Estimated Monthly EMI
           </span>
           <div className="font-serif text-4xl font-bold text-frost-100">
-            ${monthlyPayment.toLocaleString()}
+            ₹{monthlyPayment.toLocaleString('en-IN')}
             <span className="text-sm font-sans font-normal text-frost-500"> / mo</span>
           </div>
           <p className="text-[11px] text-frost-400">
-            Excludes local luxury excise & licensing. Includes all scheduled White-Glove atelier maintenance.
+            Calculated at 8.5% p.a. Indicative figure excluding insurance & RTO road tax.
           </p>
         </div>
 
@@ -156,15 +159,15 @@ export const FinancingModal: React.FC<FinancingModalProps> = ({
         <div className="space-y-2 pt-1 border-t border-obsidian-500/70 text-xs text-frost-400">
           <div className="flex items-center gap-2">
             <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>Complimentary door-to-door enclosed trailer delivery</span>
+            <span>Complimentary doorstep delivery & registration support</span>
           </div>
           <div className="flex items-center gap-2">
             <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>36 months White-Glove Valet service & replacement loaner</span>
+            <span>8-Year / 1,60,000 km battery & motor warranty</span>
           </div>
           <div className="flex items-center gap-2">
             <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>Zero penalty early trade-in privileges for next generation models</span>
+            <span>24/7 Roadside Assistance & 4x free doorstep service pickups per year</span>
           </div>
         </div>
 
@@ -172,7 +175,7 @@ export const FinancingModal: React.FC<FinancingModalProps> = ({
         {submitted ? (
           <div className="p-3 bg-emerald-900/40 border border-emerald-700/60 text-emerald-200 rounded-2xl text-center text-xs font-semibold flex items-center justify-center gap-2">
             <Check className="w-4 h-4 text-emerald-400" />
-            Proposal dispatched to Clara Beauchamp for priority review!
+            EMI inquiry forwarded to Service Advisor Priya Deshmukh!
           </div>
         ) : (
           <Button
@@ -182,7 +185,7 @@ export const FinancingModal: React.FC<FinancingModalProps> = ({
             icon={<Send className="w-4 h-4 text-obsidian-950" />}
             onClick={handleConfirm}
           >
-            Forward Term Sheet to Private Concierge
+            Submit Loan Inquiry to Advisor
           </Button>
         )}
       </div>

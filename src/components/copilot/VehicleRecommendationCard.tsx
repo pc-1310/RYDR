@@ -1,6 +1,7 @@
 import React from 'react';
 import { Sparkles, Calendar, Scale, Calculator, Check } from 'lucide-react';
 import type { Vehicle } from '../../types';
+import { formatINR } from '../../types';
 import { Badge } from '../ui/Badge';
 import { Button } from '../ui/Button';
 
@@ -60,19 +61,19 @@ export const VehicleRecommendationCard: React.FC<VehicleRecommendationCardProps>
         <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-obsidian-500/60 pb-3">
           <div>
             <span className="text-[11px] uppercase tracking-wider text-frost-600 block">
-              Acquisition From
+              Ex-Showroom Price
             </span>
             <span className="font-serif text-2xl font-bold text-frost-100">
-              ${vehicle.startingPrice.toLocaleString()}
+              {formatINR(vehicle.startingPrice)}
             </span>
-            <span className="text-xs text-frost-500 ml-1.5">MSRP / Bespoke Atelier Spec</span>
+            <span className="text-xs text-frost-500 ml-1.5">(Ex-showroom Bengaluru)</span>
           </div>
           <div className="text-right">
             <span className="text-[11px] uppercase tracking-wider text-frost-600 block">
-              Estimated Lease
+              Estimated EMI
             </span>
             <span className="text-sm font-semibold text-teal-300">
-              ~${Math.round(vehicle.startingPrice * 0.012).toLocaleString()}/mo
+              ~₹{Math.round(vehicle.startingPrice * 0.018).toLocaleString('en-IN')}/mo
             </span>
           </div>
         </div>
@@ -88,11 +89,11 @@ export const VehicleRecommendationCard: React.FC<VehicleRecommendationCardProps>
             <span className="text-xs font-semibold text-frost-100 truncate block">{vehicle.acceleration}</span>
           </div>
           <div className="p-2.5 rounded-xl bg-obsidian-900 border border-obsidian-500/70 text-center">
-            <span className="text-[10px] uppercase text-frost-600 block">Range / Power</span>
+            <span className="text-[10px] uppercase text-frost-600 block">ARAI Range / Power</span>
             <span className="text-xs font-semibold text-frost-100 truncate block">{vehicle.rangeOrMpg}</span>
           </div>
           <div className="p-2.5 rounded-xl bg-obsidian-900 border border-obsidian-500/70 text-center">
-            <span className="text-[10px] uppercase text-frost-600 block">Cabin Suite</span>
+            <span className="text-[10px] uppercase text-frost-600 block">Seating Capacity</span>
             <span className="text-xs font-semibold text-frost-100 truncate block">{vehicle.seating}</span>
           </div>
         </div>
@@ -105,7 +106,7 @@ export const VehicleRecommendationCard: React.FC<VehicleRecommendationCardProps>
         {/* Curated Features */}
         <div className="space-y-1.5 pt-1">
           <span className="text-[11px] font-semibold text-frost-200 tracking-wide block">
-            Signature Atelier Appointments:
+            Key Highlights & Features:
           </span>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
             {vehicle.curatedFeatures.map((feat, i) => (
@@ -125,7 +126,7 @@ export const VehicleRecommendationCard: React.FC<VehicleRecommendationCardProps>
             icon={<Calendar className="w-3.5 h-3.5 text-obsidian-950" />}
             onClick={() => onBookTestDrive?.(vehicle)}
           >
-            Book Private Test Drive
+            Book Home Test Drive
           </Button>
 
           <Button
@@ -134,7 +135,7 @@ export const VehicleRecommendationCard: React.FC<VehicleRecommendationCardProps>
             icon={<Calculator className="w-3.5 h-3.5 text-teal-200" />}
             onClick={() => onCalculateFinance?.(vehicle)}
           >
-            Lease & Financing
+            EMI Calculator
           </Button>
 
           <Button

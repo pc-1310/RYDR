@@ -30,38 +30,38 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const navItems = [
     {
       id: 'overview' as NavModule,
-      label: 'Overview',
-      subtitle: 'Portfolio & Telematics',
+      label: 'Dashboard',
+      subtitle: 'My Car & Live Status',
       icon: Compass,
     },
     {
       id: 'copilot' as NavModule,
-      label: 'AI Buyer Co-Pilot',
-      subtitle: 'Bespoke Consultation',
+      label: 'AI Car Assistant',
+      subtitle: 'Compare & Buy',
       icon: Sparkles,
-      badge: 'Interactive',
+      badge: 'Smart AI',
       badgeVariant: 'teal' as const,
     },
     {
       id: 'service' as NavModule,
-      label: 'Service Companion',
-      subtitle: 'White-Glove Telematics',
+      label: 'Service & Care',
+      subtitle: 'Health & Booking',
       icon: ShieldCheck,
-      badge: 'Nominal',
+      badge: 'All OK',
       badgeVariant: 'emerald' as const,
     },
     {
       id: 'showroom' as NavModule,
-      label: 'Showroom Atelier',
-      subtitle: '360° Studio & Spec',
+      label: '360° Showroom',
+      subtitle: 'Build & Price',
       icon: Layers,
     },
     {
       id: 'loyalty' as NavModule,
-      label: 'Ownership & Loyalty',
-      subtitle: 'Obsidian Privileges',
+      label: 'My Benefits',
+      subtitle: 'Rewards & Warranty',
       icon: Crown,
-      badge: 'VIP',
+      badge: 'Gold',
       badgeVariant: 'amber' as const,
     },
   ];
@@ -104,7 +104,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     RYDR
                   </span>
                   <span className="text-[10px] tracking-widest uppercase font-semibold text-teal-300 px-1.5 py-0.5 rounded bg-teal-900/80 border border-teal-700/50">
-                    Atelier
+                    Connect
                   </span>
                 </div>
                 <p className="text-[11px] font-medium tracking-wide text-frost-600 italic">
@@ -127,7 +127,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <div className="flex-1 overflow-y-auto px-4 py-6 space-y-1.5">
           <div className="px-3 pb-2">
             <p className="text-[11px] uppercase tracking-wider font-semibold text-frost-700">
-              Client Experiences
+              Customer Hub
             </p>
           </div>
 
@@ -203,12 +203,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </div>
 
               <div className="flex items-center justify-between text-xs text-frost-600 border-t border-obsidian-500/60 pt-2.5">
-                <span>Range: <strong className="text-frost-100 font-semibold">{CLIENT_PROFILE.primaryVehicle.rangeRemaining} mi</strong></span>
+                <span>Range: <strong className="text-frost-100 font-semibold">{CLIENT_PROFILE.primaryVehicle.rangeRemaining} km</strong></span>
                 <button
                   onClick={() => handleNavClick('service')}
                   className="text-teal-400 hover:text-teal-300 font-medium hover:underline text-[11px] cursor-pointer"
                 >
-                  Diagnostics →
+                  Health Check →
                 </button>
               </div>
             </div>
@@ -232,7 +232,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   {CLIENT_PROFILE.assignedConcierge.name}
                 </p>
                 <span className="text-[10px] font-medium text-emerald-300 bg-emerald-900/50 px-1.5 py-0.2 rounded border border-emerald-700/40">
-                  Live
+                  Online
                 </span>
               </div>
               <p className="text-[10px] text-frost-600 truncate">
@@ -242,7 +242,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <button
               onClick={() => handleNavClick('copilot')}
               className="p-1.5 rounded-lg bg-teal-900/70 text-teal-300 hover:bg-teal-500 hover:text-obsidian-950 border border-teal-700/50 transition-colors cursor-pointer"
-              title="Chat with Concierge"
+              title="Chat with Service Advisor"
             >
               <PhoneCall className="w-3.5 h-3.5" />
             </button>

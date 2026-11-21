@@ -65,7 +65,7 @@ export interface ServiceRecord {
 export interface ClientProfile {
   name: string;
   memberId: string;
-  tier: 'Obsidian' | 'Platinum' | 'Aura';
+  tier: 'Gold Member' | 'RYDR Plus' | 'Silver' | 'Obsidian';
   assignedConcierge: {
     name: string;
     title: string;
@@ -82,4 +82,14 @@ export interface ClientProfile {
     lastPolished: string;
     image: string;
   };
+}
+
+export function formatINR(amount: number): string {
+  if (amount >= 10000000) {
+    return `₹${(amount / 10000000).toFixed(2)} Cr`;
+  }
+  if (amount >= 100000) {
+    return `₹${(amount / 100000).toFixed(1)} Lakhs`;
+  }
+  return `₹${amount.toLocaleString('en-IN')}`;
 }

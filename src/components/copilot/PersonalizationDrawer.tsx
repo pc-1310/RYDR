@@ -17,12 +17,12 @@ export const PersonalizationDrawer: React.FC<PersonalizationDrawerProps> = ({
   matchCount,
 }) => {
   const propulsionOptions = ['All', 'Pure Electric', 'Hybrid V8', 'Twin-Turbo V6'];
-  const categoryOptions = ['All', 'Grand Tourer', 'Executive Sedan', 'Luxury SUV', 'Track Roadster'];
+  const categoryOptions = ['All', 'Executive Sedan', 'Luxury SUV', 'Track Roadster'];
   const priorityOptions = [
-    'Serenity & Luxury',
-    'Track Dynamics',
-    'Autonomous Tech',
-    'Sustainable Atelier Materials',
+    'Daily Comfort & City Commute',
+    'Highway Family Trips',
+    'Safety & ADAS Tech',
+    'Low Running Cost',
   ];
 
   return (
@@ -35,10 +35,10 @@ export const PersonalizationDrawer: React.FC<PersonalizationDrawerProps> = ({
           </div>
           <div>
             <h4 className="text-sm font-semibold text-frost-100">
-              Bespoke Personalization Filter
+              Filter Preferences
             </h4>
             <p className="text-[11px] text-frost-500">
-              Tailor the Co-Pilot's vehicle curation matrix
+              Tailor the AI assistant's car curation
             </p>
           </div>
         </div>
@@ -61,7 +61,7 @@ export const PersonalizationDrawer: React.FC<PersonalizationDrawerProps> = ({
       {/* Propulsion Type */}
       <div>
         <label className="block text-[11px] uppercase tracking-wider font-semibold text-frost-600 mb-2">
-          Propulsion Architecture
+          Powertrain Type
         </label>
         <div className="flex flex-wrap gap-1.5">
           {propulsionOptions.map((opt) => (
@@ -83,7 +83,7 @@ export const PersonalizationDrawer: React.FC<PersonalizationDrawerProps> = ({
       {/* Vehicle Category */}
       <div>
         <label className="block text-[11px] uppercase tracking-wider font-semibold text-frost-600 mb-2">
-          Body Style & Persona
+          Body Type
         </label>
         <div className="flex flex-wrap gap-1.5">
           {categoryOptions.map((cat) => (
@@ -109,29 +109,29 @@ export const PersonalizationDrawer: React.FC<PersonalizationDrawerProps> = ({
             Max Budget Ceiling
           </span>
           <span className="font-serif font-bold text-teal-300 text-sm">
-            ${filters.budgetMax.toLocaleString()}
+            ₹{(filters.budgetMax / 100000).toFixed(1)} Lakhs
           </span>
         </div>
         <input
           type="range"
-          min="120000"
-          max="250000"
-          step="10000"
+          min="1500000"
+          max="3500000"
+          step="100000"
           value={filters.budgetMax}
           onChange={(e) => onChangeFilters({ ...filters, budgetMax: Number(e.target.value) })}
           className="w-full accent-teal-500 cursor-pointer"
         />
         <div className="flex justify-between text-[10px] text-frost-600 mt-1">
-          <span>$120,000</span>
-          <span>$185,000</span>
-          <span>$250,000+</span>
+          <span>₹15 Lakhs</span>
+          <span>₹25 Lakhs</span>
+          <span>₹35 Lakhs</span>
         </div>
       </div>
 
       {/* Lifestyle Priority */}
       <div>
         <label className="block text-[11px] uppercase tracking-wider font-semibold text-frost-600 mb-2">
-          Primary Lifestyle Focus
+          Primary Use Case
         </label>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
           {priorityOptions.map((p) => (

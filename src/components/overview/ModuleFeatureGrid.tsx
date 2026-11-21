@@ -13,51 +13,51 @@ export const ModuleFeatureGrid: React.FC<ModuleFeatureGridProps> = ({
   const modules = [
     {
       id: 'copilot' as NavModule,
-      title: 'AI Buyer Co-Pilot',
-      subtitle: 'Intelligent Automotive Concierge',
-      description: 'Consult our simulated intelligence engine for vehicle recommendations, lease calculations, comparison matrices, and private home test drives.',
+      title: 'AI Car Assistant',
+      subtitle: 'Compare & Buy',
+      description: 'Consult our smart AI assistant for vehicle recommendations, EMI & loan calculations, variant comparison, and booking doorstep test drives.',
       image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80',
-      badge: 'Interactive Experience',
+      badge: 'Smart Assistant',
       badgeVariant: 'teal' as const,
       accentColor: 'border-teal-800/70 hover:border-teal-400',
       icon: Sparkles,
-      highlights: ['Lifestyle & Spec Filtering', 'Side-by-Side Comparison', 'Bespoke Lease Calculator', 'Home Test Drive Booking'],
+      highlights: ['Variant & Budget Filtering', 'Side-by-Side Comparison', 'EMI & Loan Calculator', 'Home Test Drive Booking'],
     },
     {
       id: 'service' as NavModule,
-      title: 'Service Companion',
-      subtitle: 'Predictive Telematics & Valet',
-      description: 'Comprehensive digital health telemetry for your vehicle. Schedule door-to-door concierge valet maintenance and track technician diagnostics in real time.',
+      title: 'Service & Care',
+      subtitle: 'Health & Booking',
+      description: 'Smart service reminders and live car health diagnostics. Book free doorstep pickup & drop service and track real-time maintenance updates.',
       image: 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80',
-      badge: 'Telemetry Active',
+      badge: 'All OK',
       badgeVariant: 'emerald' as const,
       accentColor: 'border-emerald-800/70 hover:border-emerald-400',
       icon: ShieldCheck,
-      highlights: ['Tire & Brake Wear Telematics', 'High-Voltage Battery Diagnostics', 'Valet Pickup & Return Tracker', 'Authorized Atelier Logbook'],
+      highlights: ['Tyre Pressure & Brake Wear', 'High-Voltage Battery Health', 'Free Doorstep Pickup (4x/Yr)', 'Dealership Verified Logbook'],
     },
     {
       id: 'showroom' as NavModule,
-      title: 'Showroom Experience',
-      subtitle: '360° Studio & Atelier Spec',
-      description: 'Step into the RYDR virtual atelier. Explore high-resolution 360 walkarounds, switch exterior bespoke paint finishes, and audition acoustic motor soundscapes.',
+      title: '360° Showroom',
+      subtitle: 'Build & Price',
+      description: 'Explore cars in 360° view. Review paint shades, preview interior dual-tone themes, and demo quiet electric cabin audio soundscapes.',
       image: 'https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=800&q=80',
-      badge: 'Virtual Atelier',
+      badge: '360° View',
       badgeVariant: 'violet' as const,
       accentColor: 'border-violet-700/60 hover:border-violet-400',
       icon: Layers,
-      highlights: ['360° Exterior & Interior Gallery', 'Bespoke Color Swatch Configurator', 'Acoustic Soundstage Simulator', 'Private Studio Appointment'],
+      highlights: ['360° Exterior & Interior View', 'Colour & Trim Selector', 'Cabin Audio Sound Demo', 'Book Home Test Drive'],
     },
     {
       id: 'loyalty' as NavModule,
-      title: 'Ownership & Loyalty',
-      subtitle: 'Obsidian Tier Private Circle',
-      description: 'Your passport to ultra-exclusive driving journeys. Private airfield track sessions, Swiss Alps grand tours, luxury jet transfers, and immutable vehicle records.',
+      title: 'My Benefits',
+      subtitle: 'Rewards & Warranty',
+      description: 'Owner benefits tailored for your daily commute and weekend trips. Access road trip convoy drives, charging credits, and battery warranty.',
       image: 'https://images.unsplash.com/photo-1508974239320-0a029497e820?auto=format&fit=crop&w=800&q=80',
-      badge: 'Obsidian VIP',
+      badge: 'Gold Member',
       badgeVariant: 'amber' as const,
       accentColor: 'border-amber-800/70 hover:border-amber-400',
       icon: Crown,
-      highlights: ['Holographic Digital Membership Card', 'Exclusive Grand Tour Reservations', 'Digital Provenance Ledger', 'VIP Airport Valet Privileges'],
+      highlights: ['Digital RC & Car Passport', 'Weekend Owners Drive (Coorg)', '500 kWh Free Fast-Charging', 'Airport Lounge & Valet Access'],
     },
   ];
 
@@ -66,10 +66,10 @@ export const ModuleFeatureGrid: React.FC<ModuleFeatureGridProps> = ({
       <div className="flex items-center justify-between">
         <div>
           <h3 className="font-serif text-2xl font-semibold text-frost-100 tracking-tight">
-            Client Experience Modules
+            Customer Hub
           </h3>
           <p className="text-sm text-frost-500">
-            Seamlessly navigate our digital automotive ecosystem
+            Quickly access your car health, showroom, and owner benefits
           </p>
         </div>
       </div>
@@ -126,7 +126,7 @@ export const ModuleFeatureGrid: React.FC<ModuleFeatureGridProps> = ({
 
               {/* Action Button Link */}
               <div className="flex items-center justify-between pt-3 border-t border-obsidian-500/50 text-xs font-semibold text-frost-200 group-hover:text-teal-300">
-                <span>Enter {m.title}</span>
+                <span>Open {m.title}</span>
                 <div className="flex items-center gap-1 transition-transform duration-200 group-hover:translate-x-1">
                   <span>Explore</span>
                   <ArrowRight className="w-3.5 h-3.5" />
