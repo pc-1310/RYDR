@@ -7,6 +7,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { LUXURY_VEHICLES } from '../../data/mockData';
+import { formatINR } from '../../types';
 import type { Vehicle } from '../../types';
 import { Badge } from '../ui/Badge';
 import { Button } from '../ui/Button';
@@ -20,24 +21,24 @@ export const ShowroomModule: React.FC<ShowroomModuleProps> = ({
 }) => {
   const [selectedVehicle, setSelectedVehicle] = useState<Vehicle>(LUXURY_VEHICLES[0]);
   const [activeView, setActiveView] = useState<'exterior' | 'interior'>('exterior');
-  const [selectedColor, setSelectedColor] = useState('Nordic Teal Metallic');
-  const [selectedLeather, setSelectedLeather] = useState('Scandinavian Saddle Tan');
+  const [selectedColor, setSelectedColor] = useState('Teal Blue');
+  const [selectedLeather, setSelectedLeather] = useState('Leatherette Seats: Tan Brown');
   const [soundMode, setSoundMode] = useState<'quiet' | 'whir' | 'v8'>('quiet');
   const [isPlayingSound, setIsPlayingSound] = useState(false);
 
   const paintColors = [
-    { name: 'Nordic Teal Metallic', hex: '#004d45', tag: 'Bespoke Signature' },
-    { name: 'Alabaster Frost', hex: '#f5f7fa', tag: 'Classic' },
-    { name: 'Obsidian Stealth Gloss', hex: '#0b0c10', tag: 'Atelier Exclusive' },
-    { name: 'St. Moritz Steel Blue', hex: '#495b7d', tag: 'Technical' },
-    { name: 'Midnight Violet Satin', hex: '#6943e2', tag: 'Limited Edition' },
+    { name: 'Teal Blue', hex: '#004d45', tag: 'Signature' },
+    { name: 'Pearl White', hex: '#f5f7fa', tag: 'Classic' },
+    { name: 'Jet Black', hex: '#0b0c10', tag: 'Popular' },
+    { name: 'Steel Blue', hex: '#495b7d', tag: 'Metallic' },
+    { name: 'Dark Purple Matte', hex: '#6943e2', tag: 'Limited Edition' },
   ];
 
   const interiorLeathers = [
-    { name: 'Scandinavian Saddle Tan', hex: '#92400e' },
-    { name: 'Midnight Slate Nappa', hex: '#1e2230' },
-    { name: 'Arctic Chalk Nappa', hex: '#dadce1' },
-    { name: 'Obsidian Carbon Stealth', hex: '#19191e' },
+    { name: 'Leatherette Seats: Tan Brown', hex: '#92400e' },
+    { name: 'Charcoal Black', hex: '#1e2230' },
+    { name: 'Off-White Dual-Tone', hex: '#dadce1' },
+    { name: 'All-Black Sport', hex: '#19191e' },
   ];
 
   return (
@@ -48,17 +49,17 @@ export const ShowroomModule: React.FC<ShowroomModuleProps> = ({
           <div className="space-y-1">
             <div className="flex flex-wrap items-center gap-2">
               <span className="font-serif text-2xl sm:text-3xl font-semibold text-frost-100">
-                Showroom Atelier
+                360° Showroom
               </span>
               <Badge variant="violet" size="sm" icon={<Rotate3d className="w-3.5 h-3.5 text-violet-300" />}>
-                360° Studio Spec
+                360° Car View
               </Badge>
               <Badge variant="obsidian" size="sm">
-                Private Viewing Room
+                Build & Price
               </Badge>
             </div>
             <p className="text-xs sm:text-sm text-frost-500 max-w-2xl leading-relaxed">
-              Immerse yourself in the bespoke atelier. Audition bespoke acoustic signatures, configure full-grain organic leathers, and explore transcontinental vehicle dynamics.
+              Explore colours, interiors, and variants in 360° before booking your test drive. Price range: ₹16.5L – ₹28.5L (Ex-showroom).
             </p>
           </div>
 
@@ -69,7 +70,7 @@ export const ShowroomModule: React.FC<ShowroomModuleProps> = ({
               icon={<Sparkles className="w-3.5 h-3.5 text-obsidian-950" />}
               onClick={() => onConsultCoPilot(selectedVehicle)}
             >
-              Analyze in Co-Pilot
+              Analyze in AI Assistant
             </Button>
           </div>
         </div>
@@ -98,7 +99,7 @@ export const ShowroomModule: React.FC<ShowroomModuleProps> = ({
                 </p>
               </div>
               <div className="mt-3 flex items-center justify-between text-xs font-medium">
-                <span className="text-teal-300 font-semibold">${v.startingPrice.toLocaleString()}</span>
+                <span className="text-teal-300 font-semibold">{formatINR(v.startingPrice)}</span>
                 <span className="text-[10px] text-frost-600">{v.propulsion}</span>
               </div>
             </button>
@@ -126,7 +127,7 @@ export const ShowroomModule: React.FC<ShowroomModuleProps> = ({
                   : 'text-frost-400 hover:text-frost-100'
               }`}
             >
-              Exterior Studio
+              Exterior View
             </button>
             <button
               onClick={() => setActiveView('interior')}
@@ -136,18 +137,18 @@ export const ShowroomModule: React.FC<ShowroomModuleProps> = ({
                   : 'text-frost-400 hover:text-frost-100'
               }`}
             >
-              Interior Sanctuary
+              Interior View
             </button>
           </div>
 
           {/* Color & Specification Floating Badge */}
           <div className="absolute bottom-4 left-4 z-10 bg-obsidian-950/85 backdrop-blur-md text-frost-100 p-4 rounded-2xl border border-teal-500/35 max-w-sm">
             <span className="text-[10px] uppercase tracking-widest font-semibold text-teal-300 block">
-              Atelier Preview Spec
+              Variant Preview
             </span>
             <h4 className="font-serif text-lg font-semibold">{selectedVehicle.name}</h4>
             <p className="text-xs text-frost-400 mt-0.5">
-              Finish: <strong className="text-frost-100">{selectedColor}</strong> • Trim: <strong className="text-frost-100">{selectedLeather}</strong>
+              Colour: <strong className="text-frost-100">{selectedColor}</strong> • Theme: <strong className="text-frost-100">{selectedLeather}</strong>
             </p>
           </div>
 
@@ -168,9 +169,9 @@ export const ShowroomModule: React.FC<ShowroomModuleProps> = ({
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs font-semibold text-frost-200 uppercase tracking-wider flex items-center gap-1.5">
                     <Palette className="w-3.5 h-3.5 text-teal-400" />
-                    Exterior Finish: <strong className="text-teal-300 ml-1">{selectedColor}</strong>
+                    Exterior Colour: <strong className="text-teal-300 ml-1">{selectedColor}</strong>
                   </span>
-                  <span className="text-[11px] text-frost-600">Hand-polished 7-layer coat</span>
+                  <span className="text-[11px] text-frost-600">Metallic dual-tone options available</span>
                 </div>
                 <div className="flex flex-wrap gap-2.5">
                   {paintColors.map((color) => (
@@ -197,9 +198,9 @@ export const ShowroomModule: React.FC<ShowroomModuleProps> = ({
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs font-semibold text-frost-200 uppercase tracking-wider">
-                    Interior Aniline Leather: <strong className="text-teal-300 ml-1">{selectedLeather}</strong>
+                    Interior Theme: <strong className="text-teal-300 ml-1">{selectedLeather}</strong>
                   </span>
-                  <span className="text-[11px] text-frost-600">Scandinavian organic chestnut hide</span>
+                  <span className="text-[11px] text-frost-600">Breathable perforated upholstery</span>
                 </div>
                 <div className="flex flex-wrap gap-2.5">
                   {interiorLeathers.map((leather) => (
@@ -229,22 +230,22 @@ export const ShowroomModule: React.FC<ShowroomModuleProps> = ({
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs font-semibold text-frost-200 uppercase tracking-wider flex items-center gap-1.5">
                     <Volume2 className="w-3.5 h-3.5 text-teal-400" />
-                    Acoustic Soundstage
+                    Cabin Audio & Drive Sound
                   </span>
                   <Badge variant="obsidian" size="sm">
-                    B&O 3D Spatial
+                    Sound Demo
                   </Badge>
                 </div>
                 <p className="text-xs text-frost-500 mb-4">
-                  Experience cabin acoustic isolation or active synthesized powertrain frequencies.
+                  Experience acoustic cabin insulation or active drive sound profiles.
                 </p>
 
                 {/* Sound Modes */}
                 <div className="space-y-2">
                   {[
-                    { id: 'quiet', title: 'Acoustic Sanctuary (54 dB)', desc: 'Zero exterior frequencies, active noise cancelling glass.' },
-                    { id: 'whir', title: 'Torque Surge Frequency', desc: 'Synthesized harmonic whine tuned for spirited acceleration.' },
-                    { id: 'v8', title: 'Hybrid V8 Symphony', desc: 'Dual-active valve baritone with deep exhaust overrun.' },
+                    { id: 'quiet', title: 'Silent Cabin Mode (Noise Reduction)', desc: 'Zero traffic noise, active acoustic glass insulation.' },
+                    { id: 'whir', title: 'Sport Mode Sound', desc: 'Dynamic synthesized acceleration sound.' },
+                    { id: 'v8', title: 'Classic Engine Sound', desc: 'Subtle powertrain growl for enthusiastic highway driving.' },
                   ].map((s) => (
                     <button
                       key={s.id}
@@ -276,12 +277,12 @@ export const ShowroomModule: React.FC<ShowroomModuleProps> = ({
 
               {/* Action */}
               <div className="pt-4 border-t border-obsidian-500/70 mt-4 flex items-center justify-between">
-                <span className="text-xs text-frost-200 font-semibold">Soundstage: Active</span>
+                <span className="text-xs text-frost-200 font-semibold">Sound Profile: Active</span>
                 <button
                   onClick={() => setIsPlayingSound(!isPlayingSound)}
                   className="text-xs text-teal-400 hover:text-teal-300 font-semibold hover:underline cursor-pointer"
                 >
-                  {isPlayingSound ? 'Mute Preview' : 'Audition Profile'}
+                  {isPlayingSound ? 'Mute Demo' : 'Play Sound Profile'}
                 </button>
               </div>
             </div>
@@ -291,19 +292,19 @@ export const ShowroomModule: React.FC<ShowroomModuleProps> = ({
           <div className="pt-4 border-t border-obsidian-500/70 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
               <span className="text-xs text-frost-500">
-                Ready to configure this exact specification?
+                Interested in booking this specification?
               </span>
               <p className="text-sm font-semibold text-frost-100">
-                Estimated Delivery: 4-6 Weeks to Beverly Hills Atelier
+                Estimated Delivery: 2-3 Weeks at Bengaluru Indiranagar Hub
               </p>
             </div>
             <div className="flex items-center gap-3">
               <Button
                 variant="teal"
                 size="md"
-                onClick={() => alert(`Private showroom appointment request forwarded to Clara Beauchamp for ${selectedVehicle.name}.`)}
+                onClick={() => alert(`Home test drive request received for ${selectedVehicle.name}. Service Advisor Priya Deshmukh will confirm your slot.`)}
               >
-                Schedule Private Viewing
+                Book Home Test Drive
               </Button>
               <Button
                 variant="primary"
@@ -312,7 +313,7 @@ export const ShowroomModule: React.FC<ShowroomModuleProps> = ({
                 iconPosition="right"
                 onClick={() => onConsultCoPilot(selectedVehicle)}
               >
-                Open in AI Co-Pilot
+                Calculate EMI in AI Assistant
               </Button>
             </div>
           </div>

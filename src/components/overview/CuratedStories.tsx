@@ -9,10 +9,10 @@ export const CuratedStories: React.FC = () => {
       <div className="flex items-center justify-between">
         <div>
           <h3 className="font-serif text-2xl font-semibold text-frost-100 tracking-tight">
-            Curated Atelier Journal
+            Community Drives & Owner Stories
           </h3>
           <p className="text-sm text-frost-500">
-            Editorial highlights, engineering breakthroughs & Obsidian private client gatherings
+            Weekend road trips, EV tips & RYDR Owners Club updates
           </p>
         </div>
       </div>
@@ -52,7 +52,7 @@ export const CuratedStories: React.FC = () => {
             </div>
 
             <div className="pt-3 mt-3 border-t border-obsidian-500/50 flex items-center justify-between text-xs font-semibold text-frost-200 group-hover:text-teal-300">
-              <span>Read Journal Note</span>
+              <span>Read Story</span>
               <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </div>
           </div>

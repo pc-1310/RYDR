@@ -12,11 +12,11 @@ export const MobileNav: React.FC<MobileNavProps> = ({
   onSelectModule,
 }) => {
   const items = [
-    { id: 'overview' as NavModule, label: 'Overview', icon: Compass },
-    { id: 'copilot' as NavModule, label: 'Co-Pilot', icon: Sparkles },
+    { id: 'overview' as NavModule, label: 'Dashboard', icon: Compass },
+    { id: 'copilot' as NavModule, label: 'AI Assistant', icon: Sparkles },
     { id: 'service' as NavModule, label: 'Service', icon: ShieldCheck },
     { id: 'showroom' as NavModule, label: 'Showroom', icon: Layers },
-    { id: 'loyalty' as NavModule, label: 'Obsidian', icon: Crown },
+    { id: 'loyalty' as NavModule, label: 'Benefits', icon: Crown },
   ];
 
   return (

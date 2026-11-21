@@ -29,12 +29,12 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
       sender: 'assistant',
       timestamp: 'Just now',
       isSimulated: true,
-      content: `Welcome to the **RYDR AI Buyer Co-Pilot**.\n\nI am your intelligent automotive concierge, calibrated with detailed telematics, bespoke atelier options, and real-time private portfolio acquisition terms.\n\nWhether you wish to compare electric grand tourers, review bespoke lease calculations, or arrange a private home viewing, how may I assist your automotive journey today?`,
+      content: `Welcome to your **RYDR AI Car Assistant**.\n\nI can help you explore variant options, calculate financing & monthly EMI, compare models side-by-side, or schedule a doorstep test drive at your convenience in Bengaluru or Pune.\n\nHow can I help you choose your next car today?`,
       suggestedFollowUps: [
-        "Quiet Long-Range Electric GT",
-        "Compare Spectre GT vs Lumina SUV",
-        "Calculate bespoke lease terms",
-        "Book private home test drive"
+        "Electric Car under ₹25L",
+        "Compare Spectre EV vs Lumina SUV",
+        "Calculate EMI with ₹3L down",
+        "Book doorstep test drive"
       ]
     }
   ]);
@@ -108,9 +108,9 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
         isSimulated: true,
         content: `Conversation reset. I am ready to advise you on specifications, vehicle comparisons, or bespoke lease structures.`,
         suggestedFollowUps: [
-          "Quiet Long-Range Electric GT",
-          "Compare Spectre GT vs Lumina SUV",
-          "Calculate bespoke lease terms"
+          "Electric Car under ₹25L",
+          "Compare Spectre EV vs Lumina SUV",
+          "Calculate EMI with ₹3L down"
         ]
       }
     ]);
@@ -151,17 +151,17 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
           <div className="space-y-1">
             <div className="flex flex-wrap items-center gap-2">
               <span className="font-serif text-2xl font-semibold text-frost-100">
-                AI Buyer Co-Pilot
+                AI Car Assistant
               </span>
               <Badge variant="teal" size="sm" icon={<Sparkles className="w-3 h-3 text-teal-300" />}>
-                Simulated Local AI
+                Smart AI
               </Badge>
               <Badge variant="emerald" size="sm">
-                Obsidian Advisor
+                RYDR Plus
               </Badge>
             </div>
             <p className="text-xs text-frost-500 max-w-2xl leading-relaxed">
-              Explore bespoke recommendations, compare engineering telemetry, calculate tailored financing, or schedule private white-glove home test drives.
+              Compare variants, calculate monthly EMI, explore feature highlights, or book a doorstep test drive at your home or office.
             </p>
           </div>
 
@@ -172,7 +172,7 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
               icon={<SlidersHorizontal className="w-3.5 h-3.5" />}
               onClick={() => setShowFilters(!showFilters)}
             >
-              {showFilters ? 'Hide Preferences' : 'Personalization Controls'}
+              {showFilters ? 'Hide Preferences' : 'Filter Preferences'}
             </Button>
             <Button
               variant="secondary"
@@ -202,7 +202,7 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
       <div className="space-y-2">
         <div className="flex items-center justify-between text-xs text-frost-600 px-1">
           <span className="font-semibold uppercase tracking-wider text-[11px]">
-            Curated Inquiries
+            Popular Inquiries
           </span>
           <span className="text-[11px]">Tap to ask immediately</span>
         </div>
@@ -253,7 +253,7 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
                 <span className="w-2 h-2 rounded-full bg-teal-400 animate-bounce" />
                 <span className="w-2 h-2 rounded-full bg-teal-400 animate-bounce [animation-delay:0.2s]" />
                 <span className="w-2 h-2 rounded-full bg-teal-400 animate-bounce [animation-delay:0.4s]" />
-                <span className="ml-2 font-medium">RYDR Co-Pilot is curating telematics...</span>
+                <span className="ml-2 font-medium">RYDR Assistant is calculating details...</span>
               </div>
             </div>
           )}
@@ -275,7 +275,7 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
                 type="text"
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
-                placeholder="Ask about vehicle dynamics, financing breakdown, or home test drives..."
+                placeholder="Ask about range, EMI calculation, variant differences, or book a test drive..."
                 className="w-full bg-obsidian-800 text-xs sm:text-sm text-frost-100 placeholder-frost-700 px-4 sm:px-5 py-3.5 rounded-full border border-obsidian-500 focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500/25 shadow-xs transition-all"
               />
             </div>
@@ -290,8 +290,8 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
             </Button>
           </form>
           <div className="flex items-center justify-between text-[11px] text-frost-600 px-3 mt-2">
-            <span>Simulated Automotive Intelligence • No external API needed</span>
-            <span className="hidden sm:inline">Press Enter to dispatch inquiry</span>
+            <span>RYDR Intelligent Assistant • Fast, Local & Private</span>
+            <span className="hidden sm:inline">Press Enter to send</span>
           </div>
         </div>
       </div>

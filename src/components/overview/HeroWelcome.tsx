@@ -22,11 +22,14 @@ export const HeroWelcome: React.FC<HeroWelcomeProps> = ({
         {/* Left Column: Greeting & Telematics Digest */}
         <div className="lg:col-span-7 space-y-5">
           <div className="flex flex-wrap items-center gap-2.5">
-            <Badge variant="obsidian" size="sm">
-              Obsidian Client Portal
+            <Badge variant="amber" size="sm">
+              Gold Member
             </Badge>
             <Badge variant="emerald" size="sm" icon={<Shield className="w-3 h-3 text-emerald-300" />}>
-              Valet Telematics Active
+              24/7 RSA Active
+            </Badge>
+            <Badge variant="teal" size="sm">
+              All OK
             </Badge>
             <span className="text-xs text-frost-600">
               Member since 2024
@@ -38,7 +41,7 @@ export const HeroWelcome: React.FC<HeroWelcomeProps> = ({
               Good afternoon, <span className="italic text-teal-300">{CLIENT_PROFILE.name}</span>.
             </h2>
             <p className="text-sm sm:text-base text-frost-400 max-w-xl leading-relaxed">
-              Your <strong className="text-frost-100 font-semibold">{CLIENT_PROFILE.primaryVehicle.model}</strong> is preconditioned and awaiting your next transcontinental journey. All onboard telemetry is within optimal tolerances.
+              Your <strong className="text-frost-100 font-semibold">{CLIENT_PROFILE.primaryVehicle.model}</strong> is pre-cooled and ready for your daily commute. All onboard vehicle systems are healthy.
             </p>
           </div>
 
@@ -54,7 +57,7 @@ export const HeroWelcome: React.FC<HeroWelcomeProps> = ({
                   {CLIENT_PROFILE.primaryVehicle.batteryLevel}%
                 </span>
                 <span className="text-[11px] font-medium text-emerald-300">
-                  318 mi range
+                  420 km range
                 </span>
               </div>
             </div>
@@ -66,10 +69,10 @@ export const HeroWelcome: React.FC<HeroWelcomeProps> = ({
               </div>
               <div className="flex items-baseline gap-1.5">
                 <span className="font-serif text-2xl font-bold text-frost-100">
-                  Optimal
+                  Healthy
                 </span>
                 <span className="text-[11px] font-medium text-frost-600">
-                  36 PSI all
+                  33 PSI all
                 </span>
               </div>
             </div>
@@ -84,7 +87,7 @@ export const HeroWelcome: React.FC<HeroWelcomeProps> = ({
                   Apr 28
                 </span>
                 <span className="text-[11px] font-medium text-amber-300">
-                  Atelier Valet
+                  Doorstep Pickup
                 </span>
               </div>
             </div>
@@ -98,7 +101,7 @@ export const HeroWelcome: React.FC<HeroWelcomeProps> = ({
               icon={<Sparkles className="w-4 h-4 text-obsidian-950" />}
               onClick={() => onNavigate('copilot')}
             >
-              Consult AI Co-Pilot
+              Ask AI Car Assistant
             </Button>
             <Button
               variant="teal"
@@ -107,7 +110,7 @@ export const HeroWelcome: React.FC<HeroWelcomeProps> = ({
               iconPosition="right"
               onClick={() => onNavigate('showroom')}
             >
-              Explore Showroom
+              Explore 360° Showroom
             </Button>
           </div>
         </div>
@@ -128,12 +131,12 @@ export const HeroWelcome: React.FC<HeroWelcomeProps> = ({
                 {CLIENT_PROFILE.primaryVehicle.model}
               </h3>
               <div className="flex items-center justify-between text-xs text-frost-300 mt-1">
-                <span>VIN: {CLIENT_PROFILE.primaryVehicle.vin}</span>
+                <span>Reg: {CLIENT_PROFILE.primaryVehicle.licensePlate}</span>
                 <button
                   onClick={() => onNavigate('service')}
                   className="text-teal-300 hover:text-teal-200 font-medium underline text-[11px] cursor-pointer"
                 >
-                  View Telematics Log
+                  View Health Log
                 </button>
               </div>
             </div>

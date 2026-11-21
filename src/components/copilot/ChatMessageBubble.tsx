@@ -1,6 +1,7 @@
 import React from 'react';
 import { Sparkles, Calendar, Calculator, Scale, ArrowRight } from 'lucide-react';
 import type { ChatMessage, Vehicle } from '../../types';
+import { formatINR } from '../../types';
 import { Badge } from '../ui/Badge';
 import { Button } from '../ui/Button';
 import { VehicleRecommendationCard } from './VehicleRecommendationCard';
@@ -50,9 +51,9 @@ export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
             <span>You • {message.timestamp}</span>
           ) : (
             <div className="flex items-center gap-2">
-              <span className="font-semibold text-frost-100">RYDR Co-Pilot</span>
+              <span className="font-semibold text-frost-100">RYDR Assistant</span>
               <Badge variant="teal" size="sm" className="text-[10px] py-0">
-                Simulated Local Concierge
+                AI Car Assistant
               </Badge>
               <span className="text-frost-600">{message.timestamp}</span>
             </div>
@@ -86,7 +87,7 @@ export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
                 <div key={v.id} className="p-2.5 rounded-xl bg-obsidian-800 border border-obsidian-500 text-xs">
                   <img src={v.exteriorImage} alt={v.name} className="w-full h-16 object-cover rounded-lg mb-2" />
                   <p className="font-semibold text-frost-100 truncate">{v.name}</p>
-                  <p className="text-[11px] text-teal-300">${v.startingPrice.toLocaleString()}</p>
+                  <p className="text-[11px] text-teal-300">{formatINR(v.startingPrice)}</p>
                 </div>
               ))}
             </div>
@@ -107,23 +108,23 @@ export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
           <div className="p-4 rounded-2xl bg-obsidian-800 border border-amber-700/60 shadow-soft space-y-2.5">
             <div className="flex items-center justify-between">
               <span className="text-xs font-semibold text-frost-100">
-                Acquisition Breakdown • {message.financingDetails.vehicleName}
+                Loan & EMI Breakdown • {message.financingDetails.vehicleName}
               </span>
               <Badge variant="amber" size="sm">
-                Est. ${message.financingDetails.monthlyPayment}/mo
+                Est. ₹{message.financingDetails.monthlyPayment.toLocaleString('en-IN')}/mo
               </Badge>
             </div>
             <div className="grid grid-cols-3 gap-2 text-center text-xs">
               <div className="p-2 rounded-lg bg-obsidian-900 border border-obsidian-500/60">
-                <span className="text-[10px] text-frost-600 block">Base Price</span>
-                <span className="font-semibold text-frost-100">${message.financingDetails.vehiclePrice.toLocaleString()}</span>
+                <span className="text-[10px] text-frost-600 block">Ex-Showroom</span>
+                <span className="font-semibold text-frost-100">{formatINR(message.financingDetails.vehiclePrice)}</span>
               </div>
               <div className="p-2 rounded-lg bg-obsidian-900 border border-obsidian-500/60">
                 <span className="text-[10px] text-frost-600 block">Down Payment</span>
-                <span className="font-semibold text-frost-100">${message.financingDetails.downPayment.toLocaleString()}</span>
+                <span className="font-semibold text-frost-100">{formatINR(message.financingDetails.downPayment)}</span>
               </div>
               <div className="p-2 rounded-lg bg-obsidian-900 border border-obsidian-500/60">
-                <span className="text-[10px] text-frost-600 block">Term</span>
+                <span className="text-[10px] text-frost-600 block">Tenure</span>
                 <span className="font-semibold text-frost-100">{message.financingDetails.termMonths} Months</span>
               </div>
             </div>
@@ -135,7 +136,7 @@ export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
                 icon={<Calculator className="w-3.5 h-3.5" />}
                 onClick={() => onCalculateFinance(message.suggestedVehicles![0])}
               >
-                Customize Payment Terms & Down Payment
+                Customize Down Payment & EMI Tenure
               </Button>
             )}
           </div>
@@ -147,14 +148,14 @@ export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
             <div className="flex items-center justify-between">
               <div>
                 <span className="text-xs font-semibold text-frost-100 block">
-                  Private Enclosed Test Drive
+                  Book Doorstep Test Drive
                 </span>
                 <span className="text-[11px] text-frost-500">
-                  {message.testDriveVehicle.name} delivered to your residence
+                  {message.testDriveVehicle.name} delivered to your home or office address
                 </span>
               </div>
               <Badge variant="emerald" size="sm">
-                Complimentary
+                Free Doorstep Demo
               </Badge>
             </div>
             <Button
@@ -184,7 +185,7 @@ export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
         {message.suggestedFollowUps && message.suggestedFollowUps.length > 0 && (
           <div className="space-y-1.5 pt-1">
             <span className="text-[10px] uppercase font-semibold text-frost-600 tracking-wider block">
-              Suggested Concierge Inquiries:
+              Suggested Inquiries:
             </span>
             <div className="flex flex-wrap gap-1.5">
               {message.suggestedFollowUps.map((promptText, idx) => (
@@ -205,7 +206,7 @@ export const ChatMessageBubble: React.FC<ChatMessageBubbleProps> = ({
       {/* User Avatar */}
       {isUser && (
         <div className="w-9 h-9 rounded-xl bg-teal-500 text-obsidian-950 font-serif text-xs font-bold flex items-center justify-center shrink-0 shadow-soft">
-          JV
+          RV
         </div>
       )}
     </div>

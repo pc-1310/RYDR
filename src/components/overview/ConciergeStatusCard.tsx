@@ -28,17 +28,17 @@ export const ConciergeStatusCard: React.FC<ConciergeStatusCardProps> = ({
           <div>
             <div className="flex items-center gap-2 mb-0.5">
               <Badge variant="emerald" size="sm">
-                Assigned Bespoke Concierge
+                Service Advisor
               </Badge>
               <span className="text-[10px] text-emerald-300 font-semibold flex items-center gap-1">
-                ● Live & On-Call
+                ● Online & On-Call
               </span>
             </div>
             <h4 className="font-serif text-lg font-semibold text-frost-100">
               {CLIENT_PROFILE.assignedConcierge.name}
             </h4>
             <p className="text-xs text-frost-500">
-              {CLIENT_PROFILE.assignedConcierge.title} • Private Client Desk
+              {CLIENT_PROFILE.assignedConcierge.title} • Bengaluru Indiranagar Hub
             </p>
           </div>
         </div>
@@ -48,7 +48,7 @@ export const ConciergeStatusCard: React.FC<ConciergeStatusCardProps> = ({
           <div className="flex-1 p-3 rounded-2xl bg-obsidian-900 border border-obsidian-500/80 flex items-center gap-2 text-xs text-frost-400">
             <Sparkles className="w-4 h-4 text-teal-400 shrink-0" />
             <span className="italic truncate">
-              "Clara, prepare an acquisition comparison for the Spectre GT and Lumina SUV."
+              "Priya, prepare an EMI and feature comparison between the Spectre EV and Lumina SUV."
             </span>
           </div>
 
@@ -57,17 +57,17 @@ export const ConciergeStatusCard: React.FC<ConciergeStatusCardProps> = ({
               variant="primary"
               size="sm"
               icon={<MessageSquare className="w-3.5 h-3.5" />}
-              onClick={() => onStartChat("Clara, prepare an acquisition comparison for the Spectre GT and Lumina SUV.")}
+              onClick={() => onStartChat("Priya, prepare an EMI and feature comparison between the Spectre EV and Lumina SUV.")}
             >
-              Ask AI Co-Pilot
+              Ask AI Assistant
             </Button>
             <Button
               variant="secondary"
               size="sm"
               icon={<Phone className="w-3.5 h-3.5 text-teal-300" />}
-              onClick={() => alert(`Connecting directly to Clara Beauchamp at RYDR Beverly Hills Atelier Desk (+1-800-RYDR-VIP).`)}
+              onClick={() => alert(`Calling Priya Deshmukh at RYDR Service Desk (Toll-Free: 1800-102-RYDR).`)}
             >
-              Direct Call
+              Call Advisor
             </Button>
           </div>
         </div>
