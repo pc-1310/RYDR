@@ -26,7 +26,7 @@ export const TopNav: React.FC<TopNavProps> = ({
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [showNotifications, setShowNotifications] = useState(false);
-  const selectedAtelier = 'Bengaluru Indiranagar Hub';
+  const selectedHub = 'Bengaluru Indiranagar Hub';
 
   const moduleTitles: Record<NavModule, { title: string; subtitle: string }> = {
     overview: {
@@ -114,7 +114,7 @@ export const TopNav: React.FC<TopNavProps> = ({
           {/* Hub Location Pill */}
           <div className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-obsidian-800 border border-obsidian-500 text-xs text-frost-400 font-medium">
             <MapPin className="w-3.5 h-3.5 text-teal-400" />
-            <span>{selectedAtelier}</span>
+            <span>{selectedHub}</span>
           </div>
 
           {/* Quick AI Launch Button (if not on copilot) */}

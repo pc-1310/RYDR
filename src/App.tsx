@@ -17,7 +17,7 @@ export function App() {
   };
 
   const handleConsultFromShowroom = (vehicle: Vehicle) => {
-    const prompt = `Tell me more about the bespoke configurations, acceleration dynamics, and private lease terms for the ${vehicle.name}.`;
+    const prompt = `Tell me more about the variants, features, real-world range, and loan / EMI options for the ${vehicle.name}.`;
     setCoPilotInitialPrompt(prompt);
     setActiveModule('copilot');
   };

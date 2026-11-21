@@ -95,7 +95,10 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
   // Handle initial prompt passed from search or overview
   useEffect(() => {
     if (initialPrompt && initialPrompt.trim().length > 0) {
-      handleSendMessage(initialPrompt);
+      const timer = setTimeout(() => {
+        handleSendMessage(initialPrompt);
+      }, 50);
+      return () => clearTimeout(timer);
     }
   }, [initialPrompt]);
 
@@ -106,7 +109,7 @@ export const AICoPilotModule: React.FC<AICoPilotModuleProps> = ({
         sender: 'assistant',
         timestamp: 'Just now',
         isSimulated: true,
-        content: `Conversation reset. I am ready to advise you on specifications, vehicle comparisons, or bespoke lease structures.`,
+        content: `Conversation reset. I am ready to advise you on specifications, vehicle comparisons, variant features, or EMI calculations.`,
         suggestedFollowUps: [
           "Electric Car under ₹25L",
           "Compare Spectre EV vs Lumina SUV",
